@@ -808,8 +808,9 @@
     .expertise-pillar {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      min-height: 220px;
+      gap: 12px;
+      min-height: 170px;
+      cursor: pointer;
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
@@ -913,6 +914,48 @@
       background: linear-gradient(180deg, rgba(15, 27, 45, 0.86), rgba(10, 19, 33, 0.92));
       border: 1px solid var(--line);
       border-radius: 22px;
+    }
+
+    .education-section-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .cv-items {
+      margin: 16px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .cv-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cv-item:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .cv-item dt {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cv-item dd {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .cv-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
     }
 
     .about-card .stat-grid {
@@ -1229,16 +1272,65 @@
 
     
 
+    .expertise-pillar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .expertise-pillar h3 {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.25;
+    }
+
+    .expertise-pillar:hover,
+    .expertise-pillar.is-open,
+    .expertise-pillar:focus-within {
+      transform: translateY(-2px);
+      border-color: rgba(127, 226, 215, 0.22);
+      box-shadow: 0 18px 38px rgba(3, 10, 18, 0.30);
+    }
+
+    .expertise-pillar .principle-detail {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 220ms ease, opacity 220ms ease, margin-top 220ms ease;
+      opacity: 0;
+      margin-top: 0;
+      color: var(--muted);
+    }
+
+    .expertise-pillar .principle-detail > div {
+      overflow: hidden;
+    }
+
+    .expertise-pillar:hover .principle-detail,
+    .expertise-pillar.is-open .principle-detail,
+    .expertise-pillar:focus-within .principle-detail {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 4px;
+    }
+
+    .expertise-pillar:hover .principle-toggle::after,
+    .expertise-pillar.is-open .principle-toggle::after,
+    .expertise-pillar:focus-within .principle-toggle::after {
+      transform: rotate(45deg);
+      background: rgba(127, 226, 215, 0.10);
+    }
+
     .expertise-fusion {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1fr;
       gap: 18px;
       align-items: stretch;
     }
 
     .expertise-pillar-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 18px;
     }
 
@@ -1856,7 +1948,9 @@
       padding: 0;
       margin: 0;
       display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
+      align-items: start;
       position: relative;
       z-index: 1;
     }
@@ -2077,25 +2171,56 @@
     
 
     .skills-hover-grid .skill-hover-card {
-      min-height: 220px;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       cursor: pointer;
       overflow: hidden;
-      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, min-height 220ms ease;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
-    .skills-hover-grid .skill-hover-card h3 {
+    .skills-hover-grid .skill-hover-card .stack-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .skills-hover-grid .skill-hover-card .stack-card-head h3 {
       margin: 0;
+      flex: 1;
     }
 
+    .skills-hover-grid .skill-hover-card .stack-preview {
+      margin: 12px 0 0;
+    }
+
+    /* collapsed by default — opens on hover, focus or click (More +) */
     .skill-hover-panel {
-      max-height: 520px;
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      margin-top: 0;
+      transition: grid-template-rows 240ms ease, opacity 220ms ease, margin-top 220ms ease;
+    }
+
+    .skill-hover-panel > .skill-hover-panel-inner {
+      overflow: hidden;
+    }
+
+    .skills-hover-grid .skill-hover-card:hover .skill-hover-panel,
+    .skills-hover-grid .skill-hover-card:focus-within .skill-hover-panel,
+    .skills-hover-grid .skill-hover-card.is-open .skill-hover-panel {
+      grid-template-rows: 1fr;
       opacity: 1;
-      overflow: visible;
-      transition: max-height 260ms ease, opacity 200ms ease, margin-top 200ms ease;
-      margin-top: 14px;
+      margin-top: 12px;
+    }
+
+    .skills-hover-grid .skill-hover-card:hover .skill-toggle::after,
+    .skills-hover-grid .skill-hover-card:focus-within .skill-toggle::after,
+    .skills-hover-grid .skill-hover-card.is-open .skill-toggle::after {
+      transform: rotate(45deg);
+      background: rgba(127, 226, 215, 0.10);
     }
 
     
@@ -2137,18 +2262,8 @@
         height: 140px;
       }
 
-      .skills-hover-grid .skill-hover-card,
-      .skills-hover-grid .skill-hover-card:hover,
-      .skills-hover-grid .skill-hover-card.is-open,
-      .skills-hover-grid .skill-hover-card:focus-within {
+      .skills-hover-grid .skill-hover-card {
         min-height: auto;
-      }
-
-      .skill-hover-panel {
-        max-height: none;
-        opacity: 1;
-        overflow: visible;
-        margin-top: 14px;
       }
     }
 
@@ -2301,6 +2416,7 @@
 
     @media (max-width: 1180px) {
       .expertise-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .expertise-pillar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .testimonials-grid { grid-template-columns: 1fr 1fr; }
       .values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -2324,6 +2440,7 @@
       .expertise-grid,
       .values-grid,
       .expertise-pillar-grid,
+      .principles-list,
       .stack-grid { grid-template-columns: 1fr 1fr; }
       .hero-shell { aspect-ratio: 1600 / 720; }
       h1 { max-width: 12ch; }
@@ -2338,6 +2455,7 @@
       .expertise-grid,
       .values-grid,
       .expertise-pillar-grid,
+      .principles-list,
       .stack-grid { grid-template-columns: 1fr; }
       .hero-content { padding: 24px; }
       .brand-copy span { display: none; }
@@ -2482,44 +2600,67 @@
 </div>
 <div class="expertise-fusion">
 <div class="expertise-pillar-grid">
-<article class="expertise-pillar glass-card">
-<div class="expertise-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8-7 10-3.8-2-7-5-7-10V6l7-3z"></path><path d="M9.3 12.2l1.8 1.8 3.9-4.2"></path></svg>
-</div>
-<h3 data-i18n="pillar1Title">Safe &amp; Reliable Software</h3>
-<p data-i18n="pillar1Text">Functional safety, software quality, robust behavior, verification mindset.</p>
-</article>
-<article class="expertise-pillar glass-card">
+<article class="expertise-pillar glass-card" tabindex="0">
+<div class="expertise-pillar-head">
 <div class="expertise-icon" aria-hidden="true">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3.5" y="4" width="6" height="6" rx="1.4"></rect><rect x="14.5" y="4" width="6" height="6" rx="1.4"></rect><rect x="9" y="14" width="6" height="6" rx="1.4"></rect><path d="M9.5 7h5"></path><path d="M12 10v4"></path></svg>
 </div>
+<span class="principle-toggle" data-i18n="principleToggle">More</span>
+</div>
 <h3 data-i18n="pillar2Title">Systems &amp; Software Engineering</h3>
-<p data-i18n="pillar2Text">End-to-end thinking from requirements and architecture to implementation and validation.</p>
+<div class="principle-detail"><div data-i18n="pillar2Text">End-to-end thinking from requirements and architecture to implementation and validation.</div></div>
 </article>
-<article class="expertise-pillar glass-card">
+<article class="expertise-pillar glass-card" tabindex="0">
+<div class="expertise-pillar-head">
+<div class="expertise-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8-7 10-3.8-2-7-5-7-10V6l7-3z"></path><path d="M9.3 12.2l1.8 1.8 3.9-4.2"></path></svg>
+</div>
+<span class="principle-toggle" data-i18n="principleToggle">More</span>
+</div>
+<h3 data-i18n="pillar1Title">Safe &amp; Reliable Software</h3>
+<div class="principle-detail"><div data-i18n="pillar1Text">Functional safety, software quality, robust behavior, verification mindset.</div></div>
+</article>
+<article class="expertise-pillar glass-card" tabindex="0">
+<div class="expertise-pillar-head">
 <div class="expertise-icon" aria-hidden="true">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="7" cy="7" r="2.2"></circle><circle cx="17" cy="7" r="2.2"></circle><circle cx="12" cy="17" r="2.2"></circle><path d="M9.2 7h5.6"></path><path d="M8.6 8.8l2 5.2"></path><path d="M15.4 8.8l-2 5.2"></path></svg>
 </div>
+<span class="principle-toggle" data-i18n="principleToggle">More</span>
+</div>
 <h3 data-i18n="pillar3Title">Engineering Processes</h3>
-<p data-i18n="pillar3Text">Structured development, traceability, documentation, and continuous improvement.</p>
+<div class="principle-detail"><div data-i18n="pillar3Text">Structured development, traceability, documentation, and continuous improvement.</div></div>
 </article>
-<article class="expertise-pillar glass-card">
+<article class="expertise-pillar glass-card" tabindex="0">
+<div class="expertise-pillar-head">
 <div class="expertise-icon" aria-hidden="true">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"></rect><path d="M9 2.8v2.4"></path><path d="M15 2.8v2.4"></path><path d="M9 18.8v2.4"></path><path d="M15 18.8v2.4"></path><path d="M2.8 9h2.4"></path><path d="M2.8 15h2.4"></path><path d="M18.8 9h2.4"></path><path d="M18.8 15h2.4"></path><path d="M10 10h4v4h-4z"></path></svg>
 </div>
+<span class="principle-toggle" data-i18n="principleToggle">More</span>
+</div>
 <h3 data-i18n="pillar4Title">AI-Driven Development</h3>
-<p data-i18n="pillar4Text">Practical use of AI to support software development, engineering workflows, and productivity.</p>
+<div class="principle-detail"><div data-i18n="pillar4Text">Practical use of AI to support software development, engineering workflows, and productivity.</div></div>
+</article>
+<article class="expertise-pillar glass-card" tabindex="0">
+<div class="expertise-pillar-head">
+<div class="expertise-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M12 3v3"></path><path d="M12 18v3"></path><path d="M3 12h3"></path><path d="M18 12h3"></path><path d="M5.6 5.6l2.1 2.1"></path><path d="M16.3 16.3l2.1 2.1"></path><path d="M18.4 5.6l-2.1 2.1"></path><path d="M7.7 16.3l-2.1 2.1"></path></svg>
+</div>
+<span class="principle-toggle" data-i18n="principleToggle">More</span>
+</div>
+<h3 data-i18n="pillar5Title">AI-Consulting</h3>
+<div class="principle-detail"><div data-i18n="pillar5Text">Exploring AI use cases, AI integration and process automation across different levels of data sensitivity.</div></div>
 </article>
 </div>
 <aside class="principles-panel glass-card">
 <p class="principles-intro" data-i18n="principlesIntro">My Core Values</p>
 <ul class="principles-list">
-<li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg></span><span data-i18n="principle1">Breaking down complexity</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle1Detail">Turning complex problems into manageable, structured work packages with clear interfaces, priorities and validation paths.</div></div></li>
 <li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"></path><circle cx="12" cy="12" r="2.6"></circle></svg></span><span data-i18n="principle2">Seeing the bigger picture</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle2Detail">Connecting requirements, system behavior, implementation, process and stakeholder needs instead of optimizing only one local detail.</div></div></li>
-<li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"></path><path d="M7 9h10"></path><path d="M7 12.5h6"></path></svg></span><span data-i18n="principle3">Clear communication</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle3Detail">Making technical topics understandable, aligning interfaces early and creating shared clarity across engineering, quality and management.</div></div></li>
+<li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg></span><span data-i18n="principle1">Breaking down complexity</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle1Detail">Turning complex problems into manageable, structured work packages with clear interfaces, priorities and validation paths.</div></div></li>
 <li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.4"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path><path d="M2 12h3"></path><path d="M19 12h3"></path></svg></span><span data-i18n="principle4">Quality focus</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle4Detail">Building reliability through traceability, review discipline, robust decision-making and a strong verification mindset.</div></div></li>
-<li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M20 11a8 8 0 0 0-13.7-5.3L4 8"></path><path d="M4 4v4h4"></path><path d="M4 13a8 8 0 0 0 13.7 5.3L20 16"></path><path d="M20 20v-4h-4"></path></svg></span><span data-i18n="principle5">Continuous learning</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle5Detail">Improving methods, tools and workflows continuously, especially where AI and structured engineering can create practical leverage.</div></div></li>
+<li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M20 11a8 8 0 0 0-13.7-5.3L4 8"></path><path d="M4 4v4h4"></path><path d="M4 13a8 8 0 0 0 13.7 5.3L20 16"></path><path d="M20 20v-4h-4"></path></svg></span><span data-i18n="principle5">Continuous learning</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle5Detail">Continuously improving methods, tools and workflows, and deliberately growing from mistakes rather than hiding them.</div></div></li>
+<li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"></path><path d="M7 9h10"></path><path d="M7 12.5h6"></path></svg></span><span data-i18n="principle3">Clear communication</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle3Detail">Making technical topics understandable, aligning interfaces early and creating shared clarity across engineering, quality and management.</div></div></li>
 <li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"></path></svg></span><span data-i18n="principle6">Human and empathetic</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle6Detail">Human and empathetic, especially in difficult situations; calm, respectful and solution-oriented in working with others.</div></div></li>
+<li tabindex="0"><div class="principle-item-top"><span class="principle-label-group"><span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 10.5l6.8-4"></path><path d="M8.6 13.5l6.8 4"></path></svg></span><span data-i18n="principle7">Knowledge sharing</span></span><span class="principle-toggle" data-i18n="principleToggle">More</span></div><div class="principle-detail"><div data-i18n="principle7Detail">Sharing know-how through clear documentation, mentoring and open exchange, so teams stay aligned and grow together.</div></div></li>
 </ul>
 </aside>
 </div>
@@ -2627,7 +2768,7 @@
 </div>
 <div class="experience-stack">
 <article class="experience-card glass-card">
-<div class="experience-meta"><span class="experience-label" data-i18n="experience1Label">Senior Design Engineer</span><strong>TES Electronics</strong><span data-i18n="experience1Meta">Frankfurt / Offenbach · Since 05/2025</span></div>
+<div class="experience-meta"><span class="experience-label" data-i18n="experience1Label">Senior Design Engineer</span><strong>TES Electronics</strong><span data-i18n="experience1Meta">Offenbach / remote · Since 05/2025</span></div>
 <div class="experience-summary">
 <h3 data-i18n="experience1Title">Embedded &amp; IoT Software Design</h3>
 <p class="experience-preview" data-i18n="experience1Text">System and software development across embedded devices, connected products and cloud services.</p>
@@ -2640,7 +2781,7 @@
 </div>
 </article>
 <article class="experience-card glass-card">
-<div class="experience-meta"><span class="experience-label" data-i18n="experience2Label">Functional software development and product management</span><strong>Continental</strong><span data-i18n="experience2Meta">Frankfurt · 09/2016 – 05/2025</span></div>
+<div class="experience-meta"><span class="experience-label" data-i18n="experience2Label">Functional software development and product management</span><strong>Continental</strong><span data-i18n="experience2Meta">Frankfurt / remote · 09/2016 – 05/2025</span></div>
 <div class="experience-summary">
 <h3 data-i18n="experience2Title">Embedded software function development for safety-critical brake control units</h3>
 <div class="experience-toggle">More details</div>
@@ -2675,71 +2816,75 @@
 </div>
 <div class="stack-grid skills-hover-grid">
 <article class="stack-card glass-card skill-hover-card" data-skill-card="systems">
-<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="4" y="5" width="16" height="10" rx="2"></rect><path d="M8 19h8"></path><path d="M12 15v4"></path></svg></div><h3 data-i18n="stack2Title">Systems &amp; Embedded Engineering</h3></div>
-<div class="skill-hover-panel">
+<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="4" y="5" width="16" height="10" rx="2"></rect><path d="M8 19h8"></path><path d="M12 15v4"></path></svg></div><h3 data-i18n="stack2Title">Systems &amp; Embedded Engineering</h3><span class="principle-toggle skill-toggle" data-i18n="principleToggle">More</span></div>
 <p class="stack-preview" data-i18n="stack2Preview">Embedded platforms, operating environments and core system design topics.</p>
+<div class="skill-hover-panel"><div class="skill-hover-panel-inner">
 <div class="tag-list">
 <span data-i18n="stack2Tag1">Embedded Systems</span><span data-i18n="stack2Tag2">RTOS</span><span data-i18n="stack2Tag3">Windows</span><span data-i18n="stack2Tag4">Linux</span><span data-i18n="stack2Tag5">UART</span><span data-i18n="stack2Tag6">AUTOSAR</span><span data-i18n="stack2Tag7">System Architecture/Design</span>
 </div>
-</div>
+</div></div>
 </article>
 <article class="stack-card glass-card skill-hover-card" data-skill-card="modeling">
-<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 18l5-6 4 3 7-9"></path><path d="M4 6h16"></path><path d="M4 18h16"></path></svg></div><h3 data-i18n="stack3Title">Modeling &amp; Simulation</h3></div>
-<div class="skill-hover-panel">
+<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 18l5-6 4 3 7-9"></path><path d="M4 6h16"></path><path d="M4 18h16"></path></svg></div><h3 data-i18n="stack3Title">Modeling &amp; Simulation</h3><span class="principle-toggle skill-toggle" data-i18n="principleToggle">More</span></div>
 <p class="stack-preview" data-i18n="stack3Preview">Model-based engineering, architecture modeling and simulation environments.</p>
+<div class="skill-hover-panel"><div class="skill-hover-panel-inner">
 <div class="tag-list">
 <span data-i18n="stack3Tag1">MATLAB/Simulink</span><span data-i18n="stack3Tag2">IBM Rhapsody</span><span data-i18n="stack3Tag3">Enterprise Architect</span><span data-i18n="stack3Tag4">IPG HIL</span><span data-i18n="stack3Tag5">IPG CarMaker</span><span data-i18n="stack3Tag6">dSPACE ControlDesk</span><span data-i18n="stack3Tag7">Vehicle Dynamics Simulation</span><span data-i18n="stack3Tag8">UML</span>
 </div>
-</div>
+</div></div>
 </article>
 <article class="stack-card glass-card skill-hover-card" data-skill-card="programming">
-<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M8 8l-4 4 4 4"></path><path d="M16 8l4 4-4 4"></path><path d="M14 5l-4 14"></path></svg></div><h3 data-i18n="stack1Title">Programming, Scripting &amp; Protocols</h3></div>
-<div class="skill-hover-panel">
+<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M8 8l-4 4 4 4"></path><path d="M16 8l4 4-4 4"></path><path d="M14 5l-4 14"></path></svg></div><h3 data-i18n="stack1Title">Programming, Scripting &amp; Protocols</h3><span class="principle-toggle skill-toggle" data-i18n="principleToggle">More</span></div>
 <p class="stack-preview" data-i18n="stack1Preview">Programming languages, data formats and communication or interface protocols.</p>
+<div class="skill-hover-panel"><div class="skill-hover-panel-inner">
 <div class="tag-list">
 <span data-i18n="stack1Tag1">C</span><span data-i18n="stack1Tag2">C++</span><span data-i18n="stack1Tag3">C#</span><span data-i18n="stack1Tag4">Java</span><span data-i18n="stack1Tag5">Python</span><span data-i18n="stack1Tag6">SQL</span><span data-i18n="stack1Tag7">JSON</span><span data-i18n="stack1Tag8">HTML</span><span data-i18n="stack1Tag9">CSS</span><span data-i18n="stack1Tag10">LaTeX</span><span data-i18n="stack1Tag12">REST</span><span data-i18n="stack1Tag13">OAuth</span><span data-i18n="stack1Tag14">MQTT</span><span data-i18n="stack1Tag15">CAN</span><span data-i18n="stack1Tag16">APIs</span>
 </div>
-</div>
+</div></div>
 </article>
 <article class="stack-card stack-card-ai glass-card skill-hover-card" data-skill-card="ai">
-<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"></rect><path d="M9 2.8v2.4"></path><path d="M15 2.8v2.4"></path><path d="M9 18.8v2.4"></path><path d="M15 18.8v2.4"></path><path d="M2.8 9h2.4"></path><path d="M2.8 15h2.4"></path><path d="M18.8 9h2.4"></path><path d="M18.8 15h2.4"></path><path d="M10 10h4v4h-4z"></path></svg></div><h3 data-i18n="stack6Title">AI &amp; Modern Development</h3></div>
-<div class="skill-hover-panel">
+<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"></rect><path d="M9 2.8v2.4"></path><path d="M15 2.8v2.4"></path><path d="M9 18.8v2.4"></path><path d="M15 18.8v2.4"></path><path d="M2.8 9h2.4"></path><path d="M2.8 15h2.4"></path><path d="M18.8 9h2.4"></path><path d="M18.8 15h2.4"></path><path d="M10 10h4v4h-4z"></path></svg></div><h3 data-i18n="stack6Title">AI &amp; Modern Development</h3><span class="principle-toggle skill-toggle" data-i18n="principleToggle">More</span></div>
 <p class="stack-preview" data-i18n="stack6Preview">AI-enabled engineering methods, agentic workflows and modern application patterns.</p>
+<div class="skill-hover-panel"><div class="skill-hover-panel-inner">
 <div class="tag-list">
 <span data-i18n="stack6Tag1">Generative AI</span><span data-i18n="stack6Tag2">LLM-based Applications</span><span data-i18n="stack6Tag3">Prompt Engineering</span><span data-i18n="stack6Tag4">Context Engineering</span><span data-i18n="stack6Tag5">AI-Driven SDLC</span><span data-i18n="stack6Tag6">Agentic Workflows</span><span data-i18n="stack6Tag7">Multi-Agent Systems</span><span data-i18n="stack6Tag8">LangChain</span><span data-i18n="stack6Tag9">RAG</span><span data-i18n="stack6Tag10">MCP</span><span data-i18n="stack6Tag11">Claude Code</span>
 </div>
-</div>
+</div></div>
 </article>
 <article class="stack-card glass-card skill-hover-card" data-skill-card="delivery">
-<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 18h16"></path><path d="M7 14l3-3 3 2 4-5"></path><path d="M16 8h2v2"></path></svg></div><h3 data-i18n="stack5Title">Project Delivery &amp; Collaboration</h3></div>
-<div class="skill-hover-panel">
+<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 18h16"></path><path d="M7 14l3-3 3 2 4-5"></path><path d="M16 8h2v2"></path></svg></div><h3 data-i18n="stack5Title">Project Delivery &amp; Collaboration</h3><span class="principle-toggle skill-toggle" data-i18n="principleToggle">More</span></div>
 <p class="stack-preview" data-i18n="stack5Preview">Project leadership, agile collaboration and delivery-oriented engineering tooling.</p>
+<div class="skill-hover-panel"><div class="skill-hover-panel-inner">
 <div class="project-stack-primary tag-list">
 <span data-i18n="stack5Tag1">Project Management</span><span data-i18n="stack5Tag2">Agile</span><span data-i18n="stack5Tag3">SAFe</span><span data-i18n="stack5Tag4">Scrum</span>
 </div>
 <div class="tag-list">
 <span data-i18n="stack5Tag5">Git</span><span data-i18n="stack5Tag6">GitHub</span><span data-i18n="stack5Tag6b">GitLab</span><span data-i18n="stack5Tag7">Jira</span><span data-i18n="stack5Tag8">DOORS</span><span data-i18n="stack5Tag9">Eclipse</span><span data-i18n="stack5Tag10">Visual Studio</span><span data-i18n="stack5Tag11">Docker</span><span data-i18n="stack5Tag12">Jenkins</span><span data-i18n="stack5Tag13">Kubernetes</span>
 </div>
-</div>
+</div></div>
 </article>
 <article class="stack-card glass-card skill-hover-card" data-skill-card="quality">
-<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8-7 10-3.8-2-7-5-7-10V6l7-3z"></path><path d="M9.3 12.2l1.8 1.8 3.9-4.2"></path></svg></div><h3 data-i18n="stack4Title">Quality, Safety &amp; Processes</h3></div>
-<div class="skill-hover-panel">
+<div class="stack-card-head"><div class="stack-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3.2 8-7 10-3.8-2-7-5-7-10V6l7-3z"></path><path d="M9.3 12.2l1.8 1.8 3.9-4.2"></path></svg></div><h3 data-i18n="stack4Title">Quality, Safety &amp; Processes</h3><span class="principle-toggle skill-toggle" data-i18n="principleToggle">More</span></div>
 <p class="stack-preview" data-i18n="stack4Preview">Standards, process quality and verification-related engineering practices.</p>
+<div class="skill-hover-panel"><div class="skill-hover-panel-inner">
 <div class="tag-list">
 <span data-i18n="stack4Tag1">Software Quality</span><span data-i18n="stack4Tag2">ISO 26262</span><span data-i18n="stack4Tag3">ASPICE</span><span data-i18n="stack4Tag4">MISRA-C</span><span data-i18n="stack4Tag5">Polyspace</span><span data-i18n="stack4Tag6">TDD</span><span data-i18n="stack4Tag7">Traceability</span>
 </div>
-</div>
+</div></div>
 </article>
 </div>
 </div>
 </section></section><section id="education"><div class="container"><div class="section-head"><div><h2 data-i18n="educationSectionTitle">Education</h2></div></div><article class="education-section-card glass-card">
-<p data-i18n="educationText">M.Sc. in Electrical Engineering and Automation Technology from the Technical University of Darmstadt, supported by project and thesis work in driving simulation, braking systems and sensor-related vehicle dynamics topics.</p>
-<ul class="bullet-list">
-<li data-i18n="educationBullet1">Master’s thesis on further development of control algorithms for a driving simulator.</li>
-<li data-i18n="educationBullet2">Project work on braking process simulation of a hydraulic braking system.</li>
-<li data-i18n="educationBullet3">Implementation work on vehicle dynamics control for an omnidirectional simulator platform.</li>
-</ul>
+<div class="experience-meta"><span class="experience-label" data-i18n="educationDegreeMeta">10/2008 – 08/2016</span><strong data-i18n="educationDegreeTitle">M.Sc. Electrical Engineering and Information Technology</strong><span data-i18n="educationDegreeSchool">TU Darmstadt</span></div>
+</article>
+<article class="education-section-card glass-card" style="margin-top:18px;">
+<h3 data-i18n="thesisProjectsTitle">Thesis / Projects</h3>
+<dl class="cv-items">
+<div class="cv-item"><dt data-i18n="cvItem1Label">Master Thesis</dt><dd data-i18n="cvItem1Text">“Analysis and further development of control algorithms for a driving simulator”, Mercedes-Benz, Stuttgart (Daimler)</dd></div>
+<div class="cv-item"><dt data-i18n="cvItem2Label">Project Seminar</dt><dd data-i18n="cvItem2Text">“Modeling and simulation of braking processes in a hydraulic brake system”</dd></div>
+<div class="cv-item"><dt data-i18n="cvItem3Label">Project Seminar</dt><dd data-i18n="cvItem3Text">“Design and implementation of a concept for processing sensor data from a Correvit sensor and compensating measurement errors using sensor fusion in a vehicle”</dd></div>
+<div class="cv-item"><dt data-i18n="cvItem4Label">Bachelor Thesis</dt><dd data-i18n="cvItem4Text">“Implementation of a controller into an existing vehicle dynamics model for the omnidirectional base platform of a self-driving driving simulator”, Mercedes-Benz, Stuttgart (Daimler)</dd></div>
+</dl>
 </article></div></section><section id="contact">
 <div class="container">
 <div class="section-head">
@@ -2797,7 +2942,7 @@
 </section></main>
 <div class="container footer-note" data-i18n="footerNote">© Andreas Butry</div>
 <script>
-  const translations = {"en": {"menuAria": "Open menu", "backToTopAria": "Back to top", "navAbout": "About me", "navExpertise": "Expertise", "navExperience": "Experience", "navSkills": "Skills & Stack", "navEducation": "Education", "navContact": "Contact", "navTestimonials": "Testimonials", "aboutTitle": "About me", "aboutLead": "Technical background, engineering scope and positioning in a concise form.", "aboutCardTitle": "Profile", "aboutText": "Systems & Software Engineer with expertise in safety-critical automotive systems, software quality and software development processes. Broad experience across the full system and software lifecycle, from requirements management and system/software architecture to implementation, verification and release in line with ISO 26262 and ASPICE. Strong focus on the continuous improvement of development processes, especially through AI-supported methods and tools. Bringing this together with my safety-critical background, I explore how AI-generated software can be made dependable and largely error-free through verification, traceability and human-in-the-loop review, and where the boundaries of AI-supported development become critical.", "expertiseTitle": "Expertise", "expertiseLead": "Core technical focus combined with engineering approach and working principles.", "pillar1Title": "Safe & Reliable Software", "pillar1Text": "Functional safety, software quality, robust behavior, verification mindset.", "pillar2Title": "Systems & Software Engineering", "pillar2Text": "End-to-end thinking from requirements and architecture to implementation and validation.", "pillar3Title": "Engineering Processes", "pillar3Text": "Structured development, traceability, documentation, and continuous improvement.", "pillar4Title": "AI-Driven Development", "pillar4Text": "Practical use of AI to support software development, engineering workflows, and productivity.", "principlesKicker": "Working principles", "principlesTitle": "Engineering approach", "principlesIntro": "A systems-oriented way of working that combines technical clarity, quality focus and constructive collaboration.", "principle1": "Breaking down complexity", "principle2": "Seeing the bigger picture", "principle3": "Clear communication", "principle4": "Quality focus", "principle5": "Continuous learning", "experienceTitle": "Experience", "experienceLead": "Selected roles and projects with focus on technical scope, responsibility and engineering depth.", "experience1Label": "Senior Design Engineer", "experience1Meta": "Frankfurt / Offenbach · Since 05/2025", "experience1Title": "Embedded & IoT Software Design", "experience1Text": "System and software development across embedded devices, connected products and cloud services.", "experience1Bullet1": "Design and development of APIs for cloud-based services and connected home automation solutions.", "experience1Bullet2": "Build-up and optimization of development processes for AI-generated software with agentic design workflows.", "experience1Bullet3": "Responsibility for project planning, technical alignment and coordination of development projects.", "experience2Label": "Functional software development and product management", "experience2Meta": "Frankfurt · 09/2016 – 05/2025", "experience2Title": "Embedded software function development for safety-critical brake control units", "experience2Text": "Function development for safety-critical brake control units in vehicles.", "experience2Bullet1": "Product development and management for EU7-compliant brake systems, including risk assessment, definition and selection of software compensation algorithms, technical support for developers, test planning, cross-functional coordination and customer communication with OEMs such as BMW and VW.", "experience2Bullet2": "New development of a model-based tire tolerance compensation algorithm in Simulink using multidimensional linear regression and a recursive least-squares estimator.", "experience2Bullet3": "System development for redundant brake control in highly automated driving with two-ECU architecture, including wheel-speed signal communication via CAN bus, fault detection and degradation strategies for functional safety and system reliability.", "experience2Bullet4": "Software quality and process responsibility in development aligned with ASPICE and ISO 26262.", "experience2Bullet5": "Software responsibility for tire tolerance compensation, wheel signal chain and road slope estimation.", "experience3Label": "Academic and early industry experience", "experience3Meta": "Simulation, testing and vehicle integration", "experience3Title": "Technical foundation in simulation, validation and integration work", "experience3Text": "Early work in academia and industry built a strong systems foundation through simulation, test benches, real-time systems and vehicle integration.", "experience3Bullet1": "Setup and commissioning of an omnidirectional driving simulator platform and development of the related real-time computing system using IPG HIL, MATLAB/Simulink and C/C++.", "experience3Bullet2": "Setup of test systems, data acquisition and analysis work including dSPACE ControlDesk-based control and evaluation workflows.", "experience3Bullet3": "Integration of steer-by-wire systems, planning and evaluation of test bench experiments and validation of vehicle dynamics models in MATLAB/Simulink.", "skillsTitle": "Skills & Stack", "skillsLead": "A broader view of languages, systems, methods, tools and AI-driven development topics.", "stack1Title": "Programming & Scripting", "stack1Tag1": "C", "stack1Tag2": "C++", "stack1Tag3": "C#", "stack1Tag4": "Java", "stack1Tag5": "Python", "stack1Tag6": "SQL", "stack1Tag7": "JSON", "stack1Tag8": "HTML", "stack1Tag9": "CSS", "stack1Tag10": "LaTeX", "stack1Tag11": "UML", "stack2Title": "Systems & Embedded Engineering", "stack2Tag1": "Embedded Systems", "stack2Tag2": "RTOS", "stack2Tag3": "Windows", "stack2Tag4": "Linux", "stack2Tag5": "UART", "stack2Tag6": "CAN", "stack2Tag7": "AUTOSAR", "stack2Tag8": "APIs", "stack3Title": "Modeling & Simulation", "stack3Tag1": "MATLAB/Simulink", "stack3Tag2": "IBM Rhapsody", "stack3Tag3": "Enterprise Architect", "stack3Tag4": "IPG HIL", "stack3Tag5": "IPG CarMaker", "stack3Tag6": "dSPACE ControlDesk", "stack3Tag7": "Vehicle Dynamics Simulation", "stack4Title": "Quality, Safety & Processes", "stack4Tag1": "Software Quality", "stack4Tag2": "ISO 26262", "stack4Tag3": "ASPICE", "stack4Tag4": "MISRA-C", "stack4Tag5": "Polyspace", "stack4Tag6": "TDD", "stack4Tag7": "Traceability", "stack5Title": "Project Delivery & Collaboration", "stack5Tag1": "Project Management", "stack5Tag2": "Agile", "stack5Tag3": "SAFe", "stack5Tag4": "Scrum", "stack5Tag5": "Git", "stack5Tag6": "GitHub", "stack5Tag6b": "GitLab", "stack5Tag7": "Jira", "stack5Tag8": "DOORS", "stack5Tag9": "Eclipse", "stack5Tag10": "Visual Studio", "stack5Tag11": "Docker", "stack5Tag12": "Jenkins", "stack5Tag13": "Kubernetes", "stack6Title": "AI & Modern Development", "stack6Tag1": "Generative AI", "stack6Tag2": "LLM-based Applications", "stack6Tag3": "Prompt Engineering", "stack6Tag4": "Context Engineering", "stack6Tag5": "AI-Driven SDLC", "stack6Tag6": "Agentic Workflows", "stack6Tag7": "Multi-Agent Systems", "stack6Tag8": "LangChain", "stack6Tag9": "RAG", "stack6Tag10": "MCP", "stack6Tag11": "Claude Code", "educationTitle": "Education", "educationLead": "Academic background and project work that support the engineering profile.", "contactTitle": "Contact", "contactLead": "A simple contact section for roles, collaborations and selected consulting topics.", "testimonialsTitle": "Testimonials", "testimonialsLead": "Reference placeholders remain here until curated recommendations are added.", "navKnowledge": "AI Engineering Concepts", "knowledgeTitle": "AI Engineering Concepts", "heroEyebrow": "Andreas Butry", "heroTitle": "Systems & Software Engineer | AI-Assisted Development", "heroIntro": "Working on safety-critical systems, embedded software, and AI-assisted engineering concepts.", "heroCtaPrimary": "LinkedIn", "heroCtaSecondary": "GitHub", "heroMeta1": "Systems & Software Engineering", "heroMeta2": "Functional Safety", "heroMeta3": "Embedded Systems", "heroMeta4": "AI-Assisted Development", "contactBullet2": "GitHub and LinkedIn are linked for direct contact and profile access.", "knowledgeTocTitle": "Topics", "knowledgeCardTitle": "Human-in-the-Loop AI Engineering", "knowledgeCardTeaser": "Mapping the V-model's phases to specialized AI agents, with humans as the final gate.", "knowledgeCardText": "The V-model maps development phases to their corresponding verification and validation steps. In an AI-driven SDLC, specialized agents can be assigned to each phase.", "knowledgeBullet1": "Requirements Agent: extracts, refines, and structures stakeholder needs.", "knowledgeBullet2": "Design Agent: translates requirements into system and software architecture.", "knowledgeBullet3": "Implementation Agents: generate and review code.", "knowledgeBullet4": "Test Agent: defines and executes verification and validation activities.", "knowledgePrinciplesTitle": "Key Principles", "knowledgeBullet5": "Test-driven development (TDD): tests are defined early and guide implementation throughout the lifecycle.", "knowledgeBullet6": "Agent independence: reduces shared context to avoid correlated or common-mode errors.", "knowledgeBullet7": "Small context scope: keeps each agent focused and improves reliability and consistency.", "knowledgeBullet8": "Cost and token optimization: limiting context per agent reduces token usage and improves scalability, runtime efficiency, and compute cost.", "knowledgeBullet9": "Clear separation of concerns: aligns with the structured verification logic of the V-model.", "knowledgeBullet10": "HUMIL (Human-in-the-Loop): humans remain the final safety and quality gate, ensuring oversight, domain judgment, and accountability across the lifecycle.", "knowledgeBullet11": "Capability-based tailoring: skills and roles can be used to adapt content and outputs to the task.", "knowledgeConclusion": "Overall, this enables a modular, traceable, cost-efficient, and more robust AI-supported SDLC.", "knowledgeCard2Title": "Code Documentation Matters", "knowledgeCard2Teaser": "AI output is only as good as the context it gets — and documentation is that context.", "knowledgeCard2Text": "AI coding assistants such as Claude Code and Copilot are becoming part of daily software engineering, but their output is only as good as the context they receive. In practice, prompt engineering increasingly becomes context engineering.", "knowledgeCard2Text2": "Well-documented projects help both humans and AI understand not only the code itself, but also the reasoning behind it.", "knowledge2Bullet1": "Clean code and clear naming make software easier to understand for humans and AI.", "knowledge2Bullet2": "Useful comments should explain why, not only what.", "knowledge2Bullet3": "Architecture documentation clarifies system structure, interfaces, and dependencies.", "knowledge2Bullet4": "Architecture Decision Records (ADRs) capture why important technical decisions were made.", "knowledge2Bullet5": "Good code documentation is one of the quickest and easiest wins when working with AI tools.", "knowledge2PrinciplesTitle": "What Better Documentation Enables", "knowledgeCard2Text3": "Without documentation, AI mainly sees implementation details. With documentation, AI can also understand design constraints, trade-offs, architecture decisions, business logic, and domain-specific topics.", "knowledge2Bullet6": "This improves code suggestions, refactoring quality, onboarding speed, and the reliability of AI responses.", "knowledge2Bullet7": "Better documentation can also reduce token usage and therefore lower cost, because concise documentation often provides context more efficiently than large amounts of raw source code.", "knowledge2Bullet8": "From personal experience, this is one of the easiest practical wins because AI is very fast at routine documentation tasks.", "knowledge2Bullet9": "In fast-growing code bases, software quality matters for humans and AI alike.", "knowledge2Bullet10": "A practical approach is to keep a Markdown file that defines how and what should be documented, and update it after every AI-assisted code change together with the production code documentation.", "knowledge2Bullet11": "For human understanding, block diagrams are especially useful; Mermaid is a practical tool for creating them.", "educationSectionTitle": "Education"}, "de": {"menuAria": "Menü öffnen", "backToTopAria": "Nach oben", "navAbout": "Über mich", "navExpertise": "Expertise", "navExperience": "Erfahrung", "navSkills": "Kompetenzen & Stack", "navEducation": "Studium", "navContact": "Kontakt", "navTestimonials": "Referenzen", "aboutTitle": "Über mich", "aboutLead": "Technischer Hintergrund, Engineering-Umfang und Positionierung in kompakter Form.", "aboutCardTitle": "Profil", "aboutText": "Systems & Software Engineer mit Expertise in sicherheitskritischen Automotive-Systemen, Softwarequalität und Softwareentwicklungsprozessen. Umfassende Erfahrung über den gesamten System- und Software-Lebenszyklus hinweg: Vom Anforderungsmanagement und der System-/Softwarearchitektur bis zu Implementierung, Verifikation und Freigabe nach ISO 26262 und ASPICE. Fokus auf die kontinuierliche Verbesserung von Entwicklungsprozessen, speziell durch den Einsatz von KI-gestützten Methoden und Werkzeugen. In Verbindung mit meinem sicherheitskritischen Hintergrund untersuche ich, wie KI-generierte Software verlässlich und weitgehend fehlerfrei werden kann, etwa durch Verifikation, Traceability und Human-in-the-Loop-Review, und wo die Grenzen der KI-gestützten Entwicklung kritisch werden.", "expertiseTitle": "Expertise", "expertiseLead": "Fachlicher Schwerpunkt kombiniert mit Engineering-Ansatz und Arbeitsprinzipien.", "pillar1Title": "Safe & Reliable Software", "pillar1Text": "Funktionale Sicherheit, Softwarequalität, robustes Systemverhalten und ein Verifikations-Mindset.", "pillar2Title": "Systems & Software Engineering", "pillar2Text": "End-to-End-Denken von Anforderungen und Architektur bis zu Implementierung und Validierung.", "pillar3Title": "Engineering Processes", "pillar3Text": "Strukturierte Entwicklung, Traceability, Dokumentation und kontinuierliche Verbesserung.", "pillar4Title": "AI-Driven Development", "pillar4Text": "Pragmatischer Einsatz von KI zur Unterstützung von Softwareentwicklung, Engineering-Workflows und Produktivität.", "principlesKicker": "Arbeitsprinzipien", "principlesTitle": "Engineering-Ansatz", "principlesIntro": "Eine systemorientierte Arbeitsweise, die technische Klarheit, Qualitätsfokus und konstruktive Zusammenarbeit verbindet.", "principle1": "Komplexität herunterbrechen", "principle2": "Das große Ganze sehen", "principle3": "Klare Kommunikation", "principle4": "Qualitätsfokus", "principle5": "Kontinuierliches Lernen", "experienceTitle": "Erfahrung", "experienceLead": "Ausgewählte Rollen und Projekte mit Fokus auf technischem Umfang, Verantwortung und Engineering-Tiefe.", "experience1Label": "Senior Design Engineer", "experience1Meta": "Frankfurt / Offenbach · Seit 05/2025", "experience1Title": "Embedded- & IoT-Softwaredesign", "experience1Text": "System- und Softwareentwicklung für eingebettete Geräte, vernetzte Produkte und Cloud-Services.", "experience1Bullet1": "Konzeption und Entwicklung von APIs für cloudbasierte Services und vernetzte Home-Automation-Lösungen.", "experience1Bullet2": "Aufbau und Optimierung von Entwicklungsprozessen für KI-generierte Software mit Agentic Design.", "experience1Bullet3": "Verantwortung für Projektplanung, technische Abstimmung und Koordination von Entwicklungsprojekten.", "experience2Label": "Funktionssoftwareentwicklung und Produktmanagement", "experience2Meta": "Frankfurt · 09/2016 – 05/2025", "experience2Title": "Funktionsentwicklung im Bereich Embedded Software für sicherheitskritische Bremssteuergeräte", "experience2Text": "Funktionsentwicklung für sicherheitskritische Bremssteuergeräte für Fahrzeuge.", "experience2Bullet1": "Produktentwicklung und -management für EU7-konforme Bremssysteme, inklusive Risikobewertung, Definition und Auswahl verschiedener Software-Kompensationsalgorithmen, technischer Unterstützung für Entwickler, Testplanung, bereichsübergreifender Koordination und Kundenkommunikation mit OEMs wie BMW und VW.", "experience2Bullet2": "Neuentwicklung eines modellbasierten Reifentoleranzausgleichs-Algorithmus in Simulink unter Verwendung einer multidimensionalen linearen Regression und eines rekursiven Least-Squares-Schätzers.", "experience2Bullet3": "Systementwicklung für redundante Bremssteuerung im hochautomatisierten Fahren mit Zwei-ECU-Architektur, inklusive Entwicklung der Raddrehzahlsignal-Kommunikation zwischen ECUs über CAN-Bus, Fehlererkennung und Degradationsstrategien zur Sicherstellung von funktionaler Sicherheit und Systemzuverlässigkeit.", "experience2Bullet4": "Softwarequalität und Prozessverantwortung in einer Entwicklung nach ASPICE- und ISO-26262-Standards.", "experience2Bullet5": "Softwareverantwortung für Reifentoleranzausgleich, Radsignalkette und Streckenneigungsschätzung.", "experience3Label": "Akademische und frühe Industrieerfahrung", "experience3Meta": "Simulation, Tests und Fahrzeugintegration", "experience3Title": "Technische Grundlage in Simulation, Validierung und Integrationsarbeit", "experience3Text": "Frühe Arbeit in Hochschule und Industrie schuf eine starke Systembasis durch Simulation, Prüfstände, Echtzeitsysteme und Fahrzeugintegration.", "experience3Bullet1": "Aufbau und Inbetriebnahme einer omnidirektionalen Fahrsimulatorplattform sowie Entwicklung des zugehörigen Echtzeit-Rechnersystems mit IPG HIL, MATLAB/Simulink und C/C++.", "experience3Bullet2": "Aufbau von Testsystemen sowie Datenerfassung und Analyse inklusive dSPACE-ControlDesk-basierter Steuer- und Auswerte-Workflows.", "experience3Bullet3": "Integration von Steer-by-Wire-Systemen, Planung und Auswertung von Prüfstandsversuchen sowie Validierung von Fahrdynamikmodellen in MATLAB/Simulink.", "skillsTitle": "Kompetenzen & Stack", "skillsLead": "Ein breiterer Überblick über Sprachen, Systeme, Methoden, Tools und KI-gestützte Entwicklungsthemen.", "stack1Title": "Programmierung & Scripting", "stack1Tag1": "C", "stack1Tag2": "C++", "stack1Tag3": "C#", "stack1Tag4": "Java", "stack1Tag5": "Python", "stack1Tag6": "SQL", "stack1Tag7": "JSON", "stack1Tag8": "HTML", "stack1Tag9": "CSS", "stack1Tag10": "LaTeX", "stack1Tag11": "UML", "stack2Title": "Systeme & Embedded Engineering", "stack2Tag1": "Eingebettete Systeme", "stack2Tag2": "RTOS", "stack2Tag3": "Windows", "stack2Tag4": "Linux", "stack2Tag5": "UART", "stack2Tag6": "CAN", "stack2Tag7": "AUTOSAR", "stack2Tag8": "APIs", "stack3Title": "Modellierung & Simulation", "stack3Tag1": "MATLAB/Simulink", "stack3Tag2": "IBM Rhapsody", "stack3Tag3": "Enterprise Architect", "stack3Tag4": "IPG HIL", "stack3Tag5": "IPG CarMaker", "stack3Tag6": "dSPACE ControlDesk", "stack3Tag7": "Fahrdynamik-Simulation", "stack4Title": "Qualität, Safety & Prozesse", "stack4Tag1": "Softwarequalität", "stack4Tag2": "ISO 26262", "stack4Tag3": "ASPICE", "stack4Tag4": "MISRA-C", "stack4Tag5": "Polyspace", "stack4Tag6": "TDD", "stack4Tag7": "Traceability", "stack5Title": "Projektsteuerung & Zusammenarbeit", "stack5Tag1": "Projektmanagement", "stack5Tag2": "Agile", "stack5Tag3": "SAFe", "stack5Tag4": "Scrum", "stack5Tag5": "Git", "stack5Tag6": "GitHub", "stack5Tag6b": "GitLab", "stack5Tag7": "Jira", "stack5Tag8": "DOORS", "stack5Tag9": "Eclipse", "stack5Tag10": "Visual Studio", "stack5Tag11": "Docker", "stack5Tag12": "Jenkins", "stack5Tag13": "Kubernetes", "stack6Title": "KI & Moderne Entwicklung", "stack6Tag1": "Generative KI", "stack6Tag2": "LLM-basierte Anwendungen", "stack6Tag3": "Prompt Engineering", "stack6Tag4": "Context Engineering", "stack6Tag5": "KI-gestützter SDLC", "stack6Tag6": "Agentic Workflows", "stack6Tag7": "Multi-Agenten-Systeme", "stack6Tag8": "LangChain", "stack6Tag9": "RAG", "stack6Tag10": "MCP", "stack6Tag11": "Claude Code", "educationTitle": "Studium", "educationLead": "Akademischer Hintergrund und Projektarbeit als Unterstützung des Engineering-Profils.", "contactTitle": "Kontakt", "contactLead": "Ein kompakter Kontaktbereich für Rollen, Zusammenarbeit und ausgewählte Themen.", "testimonialsTitle": "Referenzen", "testimonialsLead": "Referenz-Platzhalter bleiben hier sichtbar, bis kuratierte Empfehlungen ergänzt werden.", "navKnowledge": "AI Engineering Concepts", "knowledgeTitle": "AI Engineering Concepts", "heroEyebrow": "Andreas Butry", "heroTitle": "System- & Softwareentwickler | KI-gestützte Entwicklung", "heroIntro": "Arbeit an sicherheitskritischen Systemen, Embedded Software und KI-gestützten Engineering-Konzepten.", "heroCtaPrimary": "LinkedIn", "heroCtaSecondary": "GitHub", "heroMeta1": "System- & Softwareentwicklung", "heroMeta2": "Funktionale Sicherheit", "heroMeta3": "Eingebettete Systeme", "heroMeta4": "KI-gestützte Entwicklung", "contactBullet2": "GitHub und LinkedIn sind für direkten Kontakt und Profilzugriff verlinkt.", "knowledgeTocTitle": "Themen", "knowledgeCardTitle": "Human-in-the-Loop AI Engineering", "knowledgeCardTeaser": "Die Phasen des V-Modells auf spezialisierte KI-Agenten abbilden – mit dem Menschen als letzter Instanz.", "knowledgeCardText": "Das V-Modell ordnet Entwicklungsphasen den entsprechenden Verifikations- und Validierungsschritten zu. In einem KI-gesteuerten SDLC können spezialisierte Agenten jeder Phase zugewiesen werden.", "knowledgeBullet1": "Requirements Agent: extrahiert, verfeinert und strukturiert die Bedürfnisse der Stakeholder.", "knowledgeBullet2": "Design Agent: übersetzt Anforderungen in System- und Softwarearchitektur.", "knowledgeBullet3": "Implementierungsagenten: generieren und überprüfen Code.", "knowledgeBullet4": "Test Agent: definiert und führt Verifikations- und Validierungsaktivitäten aus.", "knowledgePrinciplesTitle": "Schlüsselprinzipien", "knowledgeBullet5": "Testgetriebene Entwicklung (TDD): Tests werden früh definiert und leiten die Implementierung über den gesamten Lebenszyklus hinweg.", "knowledgeBullet6": "Agentenunabhängigkeit: reduziert den geteilten Kontext, um korrelierte oder Common-Mode-Fehler zu vermeiden.", "knowledgeBullet7": "Kleiner Kontextumfang: hält jeden Agenten fokussiert und verbessert Zuverlässigkeit und Konsistenz.", "knowledgeBullet8": "Kosten- und Token-Optimierung: begrenzter Kontext pro Agent reduziert die Tokennutzung und verbessert Skalierbarkeit, Laufzeiteffizienz und Rechenkosten.", "knowledgeBullet9": "Klare Trennung der Anliegen: entspricht der strukturierten Verifikationslogik des V-Modells.", "knowledgeBullet10": "HUMIL (Human-in-the-Loop): Menschen bleiben das letzte Sicherheits- und Qualitätstor und gewährleisten Aufsicht, Domänenurteil und Verantwortung über den gesamten Lebenszyklus hinweg.", "knowledgeBullet11": "Fähigkeitsbasierte Anpassung: Skills und Rollen können genutzt werden, um Inhalte und Ergebnisse auf die Aufgabe zuzuschneiden.", "knowledgeConclusion": "Insgesamt ermöglicht dies ein modulares, nachverfolgbares, kosteneffizientes und robusteres KI-gestütztes SDLC.", "knowledgeCard2Title": "Code Documentation Matters", "knowledgeCard2Teaser": "KI-Ergebnisse sind nur so gut wie ihr Kontext – und Dokumentation liefert diesen Kontext.", "knowledgeCard2Text": "KI-Coding-Assistenten wie Claude Code und Copilot werden zunehmend Teil des täglichen Software Engineerings, aber ihre Ergebnisse sind nur so gut wie der Kontext, den sie erhalten. In der Praxis wird Prompt Engineering immer mehr zu Kontext-Engineering.", "knowledgeCard2Text2": "Gut dokumentierte Projekte helfen sowohl Menschen als auch KI, nicht nur den Code selbst, sondern auch die Begründung dahinter zu verstehen.", "knowledge2Bullet1": "Sauberer Code und klare Benennung machen Software für Menschen und KI leichter verständlich.", "knowledge2Bullet2": "Nützliche Kommentare sollten das Warum erklären, nicht nur das Was.", "knowledge2Bullet3": "Architekturdokumentation verdeutlicht Systemstruktur, Schnittstellen und Abhängigkeiten.", "knowledge2Bullet4": "Architecture Decision Records (ADRs) halten fest, warum wichtige technische Entscheidungen getroffen wurden.", "knowledge2Bullet5": "Gute Code-Dokumentation ist einer der schnellsten und einfachsten Hebel beim Arbeiten mit KI-Tools.", "knowledge2PrinciplesTitle": "Was bessere Dokumentation ermöglicht", "knowledgeCard2Text3": "Ohne Dokumentation sieht KI hauptsächlich Implementierungsdetails. Mit Dokumentation kann KI zusätzlich Designrestriktionen, Trade-offs, Architekturentscheidungen, Geschäftslogik und domänenspezifische Themen verstehen.", "knowledge2Bullet6": "Das verbessert Code-Vorschläge, Refactoring-Qualität, Onboarding-Geschwindigkeit und die Zuverlässigkeit von KI-Antworten.", "knowledge2Bullet7": "Bessere Dokumentation kann auch den Tokenverbrauch und damit die Kosten senken, weil prägnante Dokumentation Kontext oft effizienter liefert als große Mengen an Quellcode.", "knowledge2Bullet8": "Aus persönlicher Erfahrung ist das einer der einfachsten praktischen Hebel, weil KI bei routinemäßigen Dokumentationsaufgaben sehr schnell ist.", "knowledge2Bullet9": "In schnell wachsenden Codebasen ist Softwarequalität für Menschen und KI gleichermaßen wichtig.", "knowledge2Bullet10": "Ein praktischer Ansatz ist eine Markdown-Datei, die festlegt, wie und was dokumentiert werden soll, und die nach jeder KI-gestützten Codeänderung zusammen mit der produktiven Code-Dokumentation aktualisiert wird.", "knowledge2Bullet11": "Für das menschliche Verständnis sind Blockdiagramme besonders hilfreich; Mermaid ist dafür ein praktisches Werkzeug.", "educationSectionTitle": "Ausbildung"}};
+  const translations = {"en": {"menuAria": "Open menu", "backToTopAria": "Back to top", "navAbout": "About me", "navExpertise": "Expertise", "navExperience": "Experience", "navSkills": "Skills & Stack", "navEducation": "Education", "navContact": "Contact", "navTestimonials": "Testimonials", "aboutTitle": "About me", "aboutLead": "Technical background, engineering scope and positioning in a concise form.", "aboutCardTitle": "Profile", "aboutText": "Systems & Software Engineer with expertise in safety-critical automotive systems, software quality and software development processes. Broad experience across the full system and software lifecycle, from requirements management and system/software architecture to implementation, verification and release in line with ISO 26262 and ASPICE. Strong focus on the continuous improvement of development processes, especially through AI-supported methods and tools. Bringing this together with my safety-critical background, I explore how AI-generated software can be made dependable and largely error-free through verification, traceability and human-in-the-loop review, and where the boundaries of AI-supported development become critical.", "pillar5Title": "AI-Consulting", "pillar5Text": "Exploring AI use cases, AI integration and process automation across different levels of data sensitivity.", "expertiseTitle": "Expertise", "expertiseLead": "Core technical focus combined with engineering approach and working principles.", "pillar1Title": "Safe & Reliable Software", "pillar1Text": "Functional safety, software quality, robust behavior, verification mindset.", "pillar2Title": "Systems & Software Engineering", "pillar2Text": "End-to-end thinking from requirements and architecture to implementation and validation.", "pillar3Title": "Engineering Processes", "pillar3Text": "Structured development, traceability, documentation, and continuous improvement.", "pillar4Title": "AI-Driven Development", "pillar4Text": "Practical use of AI to support software development, engineering workflows, and productivity.", "principlesKicker": "Working principles", "principlesTitle": "Engineering approach", "principlesIntro": "A systems-oriented way of working that combines technical clarity, quality focus and constructive collaboration.", "principle1": "Breaking down complexity", "principle2": "Seeing the bigger picture", "principle3": "Clear communication", "principle4": "Quality focus", "principle5": "Continuous learning", "experienceTitle": "Experience", "experienceLead": "Selected roles and projects with focus on technical scope, responsibility and engineering depth.", "experience1Label": "Senior Design Engineer", "experience1Meta": "Offenbach / remote · Since 05/2025", "experience1Title": "Embedded & IoT Software Design", "experience1Text": "System and software development across embedded devices, connected products and cloud services.", "experience1Bullet1": "Design and development of APIs for cloud-based services and connected home automation solutions.", "experience1Bullet2": "Build-up and optimization of development processes for AI-generated software with agentic design workflows.", "experience1Bullet3": "Responsibility for project planning, technical alignment and coordination of development projects.", "experience2Label": "Functional software development and product management", "experience2Meta": "Frankfurt / remote · 09/2016 – 05/2025", "experience2Title": "Embedded software function development for safety-critical brake control units", "experience2Text": "Function development for safety-critical brake control units in vehicles.", "experience2Bullet1": "Product development and management for EU7-compliant brake systems, including risk assessment, definition and selection of software compensation algorithms, technical support for developers, test planning, cross-functional coordination and customer communication with OEMs such as BMW and VW.", "experience2Bullet2": "New development of a model-based tire tolerance compensation algorithm in Simulink using multidimensional linear regression and a recursive least-squares estimator.", "experience2Bullet3": "System development for redundant brake control in highly automated driving with two-ECU architecture, including wheel-speed signal communication via CAN bus, fault detection and degradation strategies for functional safety and system reliability.", "experience2Bullet4": "Software quality and process responsibility in development aligned with ASPICE and ISO 26262.", "experience2Bullet5": "Software responsibility for tire tolerance compensation, wheel signal chain and road slope estimation.", "experience3Label": "Academic and early industry experience", "experience3Meta": "Simulation, testing and vehicle integration", "experience3Title": "Technical foundation in simulation, validation and integration work", "experience3Text": "Early work in academia and industry built a strong systems foundation through simulation, test benches, real-time systems and vehicle integration.", "experience3Bullet1": "Setup and commissioning of an omnidirectional driving simulator platform and development of the related real-time computing system using IPG HIL, MATLAB/Simulink and C/C++.", "experience3Bullet2": "Setup of test systems, data acquisition and analysis work including dSPACE ControlDesk-based control and evaluation workflows.", "experience3Bullet3": "Integration of steer-by-wire systems, planning and evaluation of test bench experiments and validation of vehicle dynamics models in MATLAB/Simulink.", "skillsTitle": "Skills & Stack", "skillsLead": "A broader view of languages, systems, methods, tools and AI-driven development topics.", "stack1Title": "Programming & Scripting", "stack1Tag1": "C", "stack1Tag2": "C++", "stack1Tag3": "C#", "stack1Tag4": "Java", "stack1Tag5": "Python", "stack1Tag6": "SQL", "stack1Tag7": "JSON", "stack1Tag8": "HTML", "stack1Tag9": "CSS", "stack1Tag10": "LaTeX", "stack1Tag11": "UML", "stack2Title": "Systems & Embedded Engineering", "stack2Tag1": "Embedded Systems", "stack2Tag2": "RTOS", "stack2Tag3": "Windows", "stack2Tag4": "Linux", "stack2Tag5": "UART", "stack2Tag6": "CAN", "stack2Tag7": "AUTOSAR", "stack2Tag8": "APIs", "stack3Title": "Modeling & Simulation", "stack3Tag1": "MATLAB/Simulink", "stack3Tag2": "IBM Rhapsody", "stack3Tag3": "Enterprise Architect", "stack3Tag4": "IPG HIL", "stack3Tag5": "IPG CarMaker", "stack3Tag6": "dSPACE ControlDesk", "stack3Tag7": "Vehicle Dynamics Simulation", "stack4Title": "Quality, Safety & Processes", "stack4Tag1": "Software Quality", "stack4Tag2": "ISO 26262", "stack4Tag3": "ASPICE", "stack4Tag4": "MISRA-C", "stack4Tag5": "Polyspace", "stack4Tag6": "TDD", "stack4Tag7": "Traceability", "stack5Title": "Project Delivery & Collaboration", "stack5Tag1": "Project Management", "stack5Tag2": "Agile", "stack5Tag3": "SAFe", "stack5Tag4": "Scrum", "stack5Tag5": "Git", "stack5Tag6": "GitHub", "stack5Tag6b": "GitLab", "stack5Tag7": "Jira", "stack5Tag8": "DOORS", "stack5Tag9": "Eclipse", "stack5Tag10": "Visual Studio", "stack5Tag11": "Docker", "stack5Tag12": "Jenkins", "stack5Tag13": "Kubernetes", "stack6Title": "AI & Modern Development", "stack6Tag1": "Generative AI", "stack6Tag2": "LLM-based Applications", "stack6Tag3": "Prompt Engineering", "stack6Tag4": "Context Engineering", "stack6Tag5": "AI-Driven SDLC", "stack6Tag6": "Agentic Workflows", "stack6Tag7": "Multi-Agent Systems", "stack6Tag8": "LangChain", "stack6Tag9": "RAG", "stack6Tag10": "MCP", "stack6Tag11": "Claude Code", "educationTitle": "Education", "educationLead": "Academic background and project work that support the engineering profile.", "contactTitle": "Contact", "contactLead": "A simple contact section for roles, collaborations and selected consulting topics.", "testimonialsTitle": "Testimonials", "testimonialsLead": "Reference placeholders remain here until curated recommendations are added.", "navKnowledge": "AI Engineering Concepts", "knowledgeTitle": "AI Engineering Concepts", "heroEyebrow": "Andreas Butry", "heroTitle": "Systems & Software Engineer | AI-Assisted Development", "heroIntro": "Working on safety-critical systems, embedded software, and AI-assisted engineering concepts.", "heroCtaPrimary": "LinkedIn", "heroCtaSecondary": "GitHub", "heroMeta1": "Systems & Software Engineering", "heroMeta2": "Functional Safety", "heroMeta3": "Embedded Systems", "heroMeta4": "AI-Assisted Development", "contactBullet2": "GitHub and LinkedIn are linked for direct contact and profile access.", "knowledgeTocTitle": "Topics", "knowledgeCardTitle": "Human-in-the-Loop AI Engineering", "knowledgeCardTeaser": "Mapping the V-model's phases to specialized AI agents, with humans as the final gate.", "knowledgeCardText": "The V-model maps development phases to their corresponding verification and validation steps. In an AI-driven SDLC, specialized agents can be assigned to each phase.", "knowledgeBullet1": "Requirements Agent: extracts, refines, and structures stakeholder needs.", "knowledgeBullet2": "Design Agent: translates requirements into system and software architecture.", "knowledgeBullet3": "Implementation Agents: generate and review code.", "knowledgeBullet4": "Test Agent: defines and executes verification and validation activities.", "knowledgePrinciplesTitle": "Key Principles", "knowledgeBullet5": "Test-driven development (TDD): tests are defined early and guide implementation throughout the lifecycle.", "knowledgeBullet6": "Agent independence: reduces shared context to avoid correlated or common-mode errors.", "knowledgeBullet7": "Small context scope: keeps each agent focused and improves reliability and consistency.", "knowledgeBullet8": "Cost and token optimization: limiting context per agent reduces token usage and improves scalability, runtime efficiency, and compute cost.", "knowledgeBullet9": "Clear separation of concerns: aligns with the structured verification logic of the V-model.", "knowledgeBullet10": "HUMIL (Human-in-the-Loop): humans remain the final safety and quality gate, ensuring oversight, domain judgment, and accountability across the lifecycle.", "knowledgeBullet11": "Capability-based tailoring: skills and roles can be used to adapt content and outputs to the task.", "knowledgeConclusion": "Overall, this enables a modular, traceable, cost-efficient, and more robust AI-supported SDLC.", "knowledgeCard2Title": "Code Documentation Matters", "knowledgeCard2Teaser": "AI output is only as good as the context it gets — and documentation is that context.", "knowledgeCard2Text": "AI coding assistants such as Claude Code and Copilot are becoming part of daily software engineering, but their output is only as good as the context they receive. In practice, prompt engineering increasingly becomes context engineering.", "knowledgeCard2Text2": "Well-documented projects help both humans and AI understand not only the code itself, but also the reasoning behind it.", "knowledge2Bullet1": "Clean code and clear naming make software easier to understand for humans and AI.", "knowledge2Bullet2": "Useful comments should explain why, not only what.", "knowledge2Bullet3": "Architecture documentation clarifies system structure, interfaces, and dependencies.", "knowledge2Bullet4": "Architecture Decision Records (ADRs) capture why important technical decisions were made.", "knowledge2Bullet5": "Good code documentation is one of the quickest and easiest wins when working with AI tools.", "knowledge2PrinciplesTitle": "What Better Documentation Enables", "knowledgeCard2Text3": "Without documentation, AI mainly sees implementation details. With documentation, AI can also understand design constraints, trade-offs, architecture decisions, business logic, and domain-specific topics.", "knowledge2Bullet6": "This improves code suggestions, refactoring quality, onboarding speed, and the reliability of AI responses.", "knowledge2Bullet7": "Better documentation can also reduce token usage and therefore lower cost, because concise documentation often provides context more efficiently than large amounts of raw source code.", "knowledge2Bullet8": "From personal experience, this is one of the easiest practical wins because AI is very fast at routine documentation tasks.", "knowledge2Bullet9": "In fast-growing code bases, software quality matters for humans and AI alike.", "knowledge2Bullet10": "A practical approach is to keep a Markdown file that defines how and what should be documented, and update it after every AI-assisted code change together with the production code documentation.", "knowledge2Bullet11": "For human understanding, block diagrams are especially useful; Mermaid is a practical tool for creating them.", "educationSectionTitle": "Education", "educationDegreeMeta": "10/2008 – 08/2016", "educationDegreeTitle": "M.Sc. Electrical Engineering and Information Technology", "educationDegreeSchool": "TU Darmstadt", "thesisProjectsTitle": "Thesis / Projects", "cvItem1Label": "Master Thesis", "cvItem1Text": "“Analysis and further development of control algorithms for a driving simulator”, Mercedes-Benz, Stuttgart (Daimler)", "cvItem2Label": "Project Seminar", "cvItem2Text": "“Modeling and simulation of braking processes in a hydraulic brake system”", "cvItem3Label": "Project Seminar", "cvItem3Text": "“Design and implementation of a concept for processing sensor data from a Correvit sensor and compensating measurement errors using sensor fusion in a vehicle”", "cvItem4Label": "Bachelor Thesis", "cvItem4Text": "“Implementation of a controller into an existing vehicle dynamics model for the omnidirectional base platform of a self-driving driving simulator”, Mercedes-Benz, Stuttgart (Daimler)"}, "de": {"menuAria": "Menü öffnen", "backToTopAria": "Nach oben", "navAbout": "Über mich", "navExpertise": "Expertise", "navExperience": "Erfahrung", "navSkills": "Kompetenzen & Stack", "navEducation": "Studium", "navContact": "Kontakt", "navTestimonials": "Referenzen", "aboutTitle": "Über mich", "aboutLead": "Technischer Hintergrund, Engineering-Umfang und Positionierung in kompakter Form.", "aboutCardTitle": "Profil", "aboutText": "Systems & Software Engineer mit Expertise in sicherheitskritischen Automotive-Systemen, Softwarequalität und Softwareentwicklungsprozessen. Umfassende Erfahrung über den gesamten System- und Software-Lebenszyklus hinweg: Vom Anforderungsmanagement und der System-/Softwarearchitektur bis zu Implementierung, Verifikation und Freigabe nach ISO 26262 und ASPICE. Fokus auf die kontinuierliche Verbesserung von Entwicklungsprozessen, speziell durch den Einsatz von KI-gestützten Methoden und Werkzeugen. In Verbindung mit meinem sicherheitskritischen Hintergrund untersuche ich, wie KI-generierte Software verlässlich und weitgehend fehlerfrei werden kann, etwa durch Verifikation, Traceability und Human-in-the-Loop-Review, und wo die Grenzen der KI-gestützten Entwicklung kritisch werden.", "pillar5Title": "KI-Beratung", "pillar5Text": "Erkundung von KI-Anwendungsfällen, KI-Integration und Prozessautomatisierung über verschiedene Stufen der Datensensibilität hinweg.", "expertiseTitle": "Expertise", "expertiseLead": "Fachlicher Schwerpunkt kombiniert mit Engineering-Ansatz und Arbeitsprinzipien.", "pillar1Title": "Safe & Reliable Software", "pillar1Text": "Funktionale Sicherheit, Softwarequalität, robustes Systemverhalten und ein Verifikations-Mindset.", "pillar2Title": "Systems & Software Engineering", "pillar2Text": "End-to-End-Denken von Anforderungen und Architektur bis zu Implementierung und Validierung.", "pillar3Title": "Engineering Processes", "pillar3Text": "Strukturierte Entwicklung, Traceability, Dokumentation und kontinuierliche Verbesserung.", "pillar4Title": "AI-Driven Development", "pillar4Text": "Pragmatischer Einsatz von KI zur Unterstützung von Softwareentwicklung, Engineering-Workflows und Produktivität.", "principlesKicker": "Arbeitsprinzipien", "principlesTitle": "Engineering-Ansatz", "principlesIntro": "Eine systemorientierte Arbeitsweise, die technische Klarheit, Qualitätsfokus und konstruktive Zusammenarbeit verbindet.", "principle1": "Komplexität herunterbrechen", "principle2": "Das große Ganze sehen", "principle3": "Klare Kommunikation", "principle4": "Qualitätsfokus", "principle5": "Kontinuierliches Lernen", "experienceTitle": "Erfahrung", "experienceLead": "Ausgewählte Rollen und Projekte mit Fokus auf technischem Umfang, Verantwortung und Engineering-Tiefe.", "experience1Label": "Senior Design Engineer", "experience1Meta": "Offenbach / remote · Seit 05/2025", "experience1Title": "Embedded- & IoT-Softwaredesign", "experience1Text": "System- und Softwareentwicklung für eingebettete Geräte, vernetzte Produkte und Cloud-Services.", "experience1Bullet1": "Konzeption und Entwicklung von APIs für cloudbasierte Services und vernetzte Home-Automation-Lösungen.", "experience1Bullet2": "Aufbau und Optimierung von Entwicklungsprozessen für KI-generierte Software mit Agentic Design.", "experience1Bullet3": "Verantwortung für Projektplanung, technische Abstimmung und Koordination von Entwicklungsprojekten.", "experience2Label": "Funktionssoftwareentwicklung und Produktmanagement", "experience2Meta": "Frankfurt / remote · 09/2016 – 05/2025", "experience2Title": "Funktionsentwicklung im Bereich Embedded Software für sicherheitskritische Bremssteuergeräte", "experience2Text": "Funktionsentwicklung für sicherheitskritische Bremssteuergeräte für Fahrzeuge.", "experience2Bullet1": "Produktentwicklung und -management für EU7-konforme Bremssysteme, inklusive Risikobewertung, Definition und Auswahl verschiedener Software-Kompensationsalgorithmen, technischer Unterstützung für Entwickler, Testplanung, bereichsübergreifender Koordination und Kundenkommunikation mit OEMs wie BMW und VW.", "experience2Bullet2": "Neuentwicklung eines modellbasierten Reifentoleranzausgleichs-Algorithmus in Simulink unter Verwendung einer multidimensionalen linearen Regression und eines rekursiven Least-Squares-Schätzers.", "experience2Bullet3": "Systementwicklung für redundante Bremssteuerung im hochautomatisierten Fahren mit Zwei-ECU-Architektur, inklusive Entwicklung der Raddrehzahlsignal-Kommunikation zwischen ECUs über CAN-Bus, Fehlererkennung und Degradationsstrategien zur Sicherstellung von funktionaler Sicherheit und Systemzuverlässigkeit.", "experience2Bullet4": "Softwarequalität und Prozessverantwortung in einer Entwicklung nach ASPICE- und ISO-26262-Standards.", "experience2Bullet5": "Softwareverantwortung für Reifentoleranzausgleich, Radsignalkette und Streckenneigungsschätzung.", "experience3Label": "Akademische und frühe Industrieerfahrung", "experience3Meta": "Simulation, Tests und Fahrzeugintegration", "experience3Title": "Technische Grundlage in Simulation, Validierung und Integrationsarbeit", "experience3Text": "Frühe Arbeit in Hochschule und Industrie schuf eine starke Systembasis durch Simulation, Prüfstände, Echtzeitsysteme und Fahrzeugintegration.", "experience3Bullet1": "Aufbau und Inbetriebnahme einer omnidirektionalen Fahrsimulatorplattform sowie Entwicklung des zugehörigen Echtzeit-Rechnersystems mit IPG HIL, MATLAB/Simulink und C/C++.", "experience3Bullet2": "Aufbau von Testsystemen sowie Datenerfassung und Analyse inklusive dSPACE-ControlDesk-basierter Steuer- und Auswerte-Workflows.", "experience3Bullet3": "Integration von Steer-by-Wire-Systemen, Planung und Auswertung von Prüfstandsversuchen sowie Validierung von Fahrdynamikmodellen in MATLAB/Simulink.", "skillsTitle": "Kompetenzen & Stack", "skillsLead": "Ein breiterer Überblick über Sprachen, Systeme, Methoden, Tools und KI-gestützte Entwicklungsthemen.", "stack1Title": "Programmierung & Scripting", "stack1Tag1": "C", "stack1Tag2": "C++", "stack1Tag3": "C#", "stack1Tag4": "Java", "stack1Tag5": "Python", "stack1Tag6": "SQL", "stack1Tag7": "JSON", "stack1Tag8": "HTML", "stack1Tag9": "CSS", "stack1Tag10": "LaTeX", "stack1Tag11": "UML", "stack2Title": "Systeme & Embedded Engineering", "stack2Tag1": "Eingebettete Systeme", "stack2Tag2": "RTOS", "stack2Tag3": "Windows", "stack2Tag4": "Linux", "stack2Tag5": "UART", "stack2Tag6": "CAN", "stack2Tag7": "AUTOSAR", "stack2Tag8": "APIs", "stack3Title": "Modellierung & Simulation", "stack3Tag1": "MATLAB/Simulink", "stack3Tag2": "IBM Rhapsody", "stack3Tag3": "Enterprise Architect", "stack3Tag4": "IPG HIL", "stack3Tag5": "IPG CarMaker", "stack3Tag6": "dSPACE ControlDesk", "stack3Tag7": "Fahrdynamik-Simulation", "stack4Title": "Qualität, Safety & Prozesse", "stack4Tag1": "Softwarequalität", "stack4Tag2": "ISO 26262", "stack4Tag3": "ASPICE", "stack4Tag4": "MISRA-C", "stack4Tag5": "Polyspace", "stack4Tag6": "TDD", "stack4Tag7": "Traceability", "stack5Title": "Projektsteuerung & Zusammenarbeit", "stack5Tag1": "Projektmanagement", "stack5Tag2": "Agile", "stack5Tag3": "SAFe", "stack5Tag4": "Scrum", "stack5Tag5": "Git", "stack5Tag6": "GitHub", "stack5Tag6b": "GitLab", "stack5Tag7": "Jira", "stack5Tag8": "DOORS", "stack5Tag9": "Eclipse", "stack5Tag10": "Visual Studio", "stack5Tag11": "Docker", "stack5Tag12": "Jenkins", "stack5Tag13": "Kubernetes", "stack6Title": "KI & Moderne Entwicklung", "stack6Tag1": "Generative KI", "stack6Tag2": "LLM-basierte Anwendungen", "stack6Tag3": "Prompt Engineering", "stack6Tag4": "Context Engineering", "stack6Tag5": "KI-gestützter SDLC", "stack6Tag6": "Agentic Workflows", "stack6Tag7": "Multi-Agenten-Systeme", "stack6Tag8": "LangChain", "stack6Tag9": "RAG", "stack6Tag10": "MCP", "stack6Tag11": "Claude Code", "educationTitle": "Studium", "educationLead": "Akademischer Hintergrund und Projektarbeit als Unterstützung des Engineering-Profils.", "contactTitle": "Kontakt", "contactLead": "Ein kompakter Kontaktbereich für Rollen, Zusammenarbeit und ausgewählte Themen.", "testimonialsTitle": "Referenzen", "testimonialsLead": "Referenz-Platzhalter bleiben hier sichtbar, bis kuratierte Empfehlungen ergänzt werden.", "navKnowledge": "AI Engineering Concepts", "knowledgeTitle": "AI Engineering Concepts", "heroEyebrow": "Andreas Butry", "heroTitle": "System- & Softwareentwickler | KI-gestützte Entwicklung", "heroIntro": "Arbeit an sicherheitskritischen Systemen, Embedded Software und KI-gestützten Engineering-Konzepten.", "heroCtaPrimary": "LinkedIn", "heroCtaSecondary": "GitHub", "heroMeta1": "System- & Softwareentwicklung", "heroMeta2": "Funktionale Sicherheit", "heroMeta3": "Eingebettete Systeme", "heroMeta4": "KI-gestützte Entwicklung", "contactBullet2": "GitHub und LinkedIn sind für direkten Kontakt und Profilzugriff verlinkt.", "knowledgeTocTitle": "Themen", "knowledgeCardTitle": "Human-in-the-Loop AI Engineering", "knowledgeCardTeaser": "Die Phasen des V-Modells auf spezialisierte KI-Agenten abbilden – mit dem Menschen als letzter Instanz.", "knowledgeCardText": "Das V-Modell ordnet Entwicklungsphasen den entsprechenden Verifikations- und Validierungsschritten zu. In einem KI-gesteuerten SDLC können spezialisierte Agenten jeder Phase zugewiesen werden.", "knowledgeBullet1": "Requirements Agent: extrahiert, verfeinert und strukturiert die Bedürfnisse der Stakeholder.", "knowledgeBullet2": "Design Agent: übersetzt Anforderungen in System- und Softwarearchitektur.", "knowledgeBullet3": "Implementierungsagenten: generieren und überprüfen Code.", "knowledgeBullet4": "Test Agent: definiert und führt Verifikations- und Validierungsaktivitäten aus.", "knowledgePrinciplesTitle": "Schlüsselprinzipien", "knowledgeBullet5": "Testgetriebene Entwicklung (TDD): Tests werden früh definiert und leiten die Implementierung über den gesamten Lebenszyklus hinweg.", "knowledgeBullet6": "Agentenunabhängigkeit: reduziert den geteilten Kontext, um korrelierte oder Common-Mode-Fehler zu vermeiden.", "knowledgeBullet7": "Kleiner Kontextumfang: hält jeden Agenten fokussiert und verbessert Zuverlässigkeit und Konsistenz.", "knowledgeBullet8": "Kosten- und Token-Optimierung: begrenzter Kontext pro Agent reduziert die Tokennutzung und verbessert Skalierbarkeit, Laufzeiteffizienz und Rechenkosten.", "knowledgeBullet9": "Klare Trennung der Anliegen: entspricht der strukturierten Verifikationslogik des V-Modells.", "knowledgeBullet10": "HUMIL (Human-in-the-Loop): Menschen bleiben das letzte Sicherheits- und Qualitätstor und gewährleisten Aufsicht, Domänenurteil und Verantwortung über den gesamten Lebenszyklus hinweg.", "knowledgeBullet11": "Fähigkeitsbasierte Anpassung: Skills und Rollen können genutzt werden, um Inhalte und Ergebnisse auf die Aufgabe zuzuschneiden.", "knowledgeConclusion": "Insgesamt ermöglicht dies ein modulares, nachverfolgbares, kosteneffizientes und robusteres KI-gestütztes SDLC.", "knowledgeCard2Title": "Code Documentation Matters", "knowledgeCard2Teaser": "KI-Ergebnisse sind nur so gut wie ihr Kontext – und Dokumentation liefert diesen Kontext.", "knowledgeCard2Text": "KI-Coding-Assistenten wie Claude Code und Copilot werden zunehmend Teil des täglichen Software Engineerings, aber ihre Ergebnisse sind nur so gut wie der Kontext, den sie erhalten. In der Praxis wird Prompt Engineering immer mehr zu Kontext-Engineering.", "knowledgeCard2Text2": "Gut dokumentierte Projekte helfen sowohl Menschen als auch KI, nicht nur den Code selbst, sondern auch die Begründung dahinter zu verstehen.", "knowledge2Bullet1": "Sauberer Code und klare Benennung machen Software für Menschen und KI leichter verständlich.", "knowledge2Bullet2": "Nützliche Kommentare sollten das Warum erklären, nicht nur das Was.", "knowledge2Bullet3": "Architekturdokumentation verdeutlicht Systemstruktur, Schnittstellen und Abhängigkeiten.", "knowledge2Bullet4": "Architecture Decision Records (ADRs) halten fest, warum wichtige technische Entscheidungen getroffen wurden.", "knowledge2Bullet5": "Gute Code-Dokumentation ist einer der schnellsten und einfachsten Hebel beim Arbeiten mit KI-Tools.", "knowledge2PrinciplesTitle": "Was bessere Dokumentation ermöglicht", "knowledgeCard2Text3": "Ohne Dokumentation sieht KI hauptsächlich Implementierungsdetails. Mit Dokumentation kann KI zusätzlich Designrestriktionen, Trade-offs, Architekturentscheidungen, Geschäftslogik und domänenspezifische Themen verstehen.", "knowledge2Bullet6": "Das verbessert Code-Vorschläge, Refactoring-Qualität, Onboarding-Geschwindigkeit und die Zuverlässigkeit von KI-Antworten.", "knowledge2Bullet7": "Bessere Dokumentation kann auch den Tokenverbrauch und damit die Kosten senken, weil prägnante Dokumentation Kontext oft effizienter liefert als große Mengen an Quellcode.", "knowledge2Bullet8": "Aus persönlicher Erfahrung ist das einer der einfachsten praktischen Hebel, weil KI bei routinemäßigen Dokumentationsaufgaben sehr schnell ist.", "knowledge2Bullet9": "In schnell wachsenden Codebasen ist Softwarequalität für Menschen und KI gleichermaßen wichtig.", "knowledge2Bullet10": "Ein praktischer Ansatz ist eine Markdown-Datei, die festlegt, wie und was dokumentiert werden soll, und die nach jeder KI-gestützten Codeänderung zusammen mit der produktiven Code-Dokumentation aktualisiert wird.", "knowledge2Bullet11": "Für das menschliche Verständnis sind Blockdiagramme besonders hilfreich; Mermaid ist dafür ein praktisches Werkzeug.", "educationSectionTitle": "Ausbildung", "educationDegreeMeta": "10/2008 – 08/2016", "educationDegreeTitle": "M.Sc. Elektrotechnik und Informationstechnik", "educationDegreeSchool": "TU Darmstadt", "thesisProjectsTitle": "Abschlussarbeiten / Projekte", "cvItem1Label": "Masterarbeit", "cvItem1Text": "„Analyse und Weiterentwicklung von Regelungsalgorithmen für einen Fahrsimulator“, Mercedes-Benz, Stuttgart (Daimler)", "cvItem2Label": "Projektseminar", "cvItem2Text": "„Modellierung und Simulation von Bremsvorgängen in einem hydraulischen Bremssystem“", "cvItem3Label": "Projektseminar", "cvItem3Text": "„Konzeption und Umsetzung eines Konzepts zur Verarbeitung von Sensordaten eines Correvit-Sensors und Kompensation von Messfehlern mittels Sensorfusion im Fahrzeug“", "cvItem4Label": "Bachelorarbeit", "cvItem4Text": "„Implementierung eines Reglers in ein bestehendes Fahrdynamikmodell für die omnidirektionale Basisplattform eines selbstfahrenden Fahrsimulators“, Mercedes-Benz, Stuttgart (Daimler)"}};
 
   document.addEventListener('DOMContentLoaded', function () {
     const menuTrigger = document.querySelector('.floating-menu-trigger');
@@ -2940,7 +3085,7 @@
     });
   });
 
-  document.querySelectorAll('.principles-list li').forEach((item) => {
+  document.querySelectorAll('.principles-list li, .expertise-pillar').forEach((item) => {
     item.addEventListener('click', () => item.classList.toggle('is-open'));
     item.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
@@ -2993,8 +3138,20 @@
       en: {
         principlesIntro: 'My Core Values',
         principleToggle: 'More',
+        principle1: 'Breaking down complexity',
+        principle1Detail: 'Turning complex problems into manageable, structured work packages with clear interfaces, priorities and validation paths.',
+        principle2: 'Seeing the bigger picture',
+        principle2Detail: 'Connecting requirements, system behavior, implementation, process and stakeholder needs instead of optimizing only one local detail.',
+        principle3: 'Clear communication',
+        principle3Detail: 'Making technical topics understandable, aligning interfaces early and creating shared clarity across engineering, quality and management.',
+        principle4: 'Quality focus',
+        principle4Detail: 'Building reliability through traceability, review discipline, robust decision-making and a strong verification mindset.',
+        principle5: 'Continuous learning',
+        principle5Detail: 'Continuously improving methods, tools and workflows, and deliberately growing from mistakes rather than hiding them.',
         principle6: 'Human and empathetic',
-        principle6Detail: 'Human and empathetic, especially in difficult situations; calm, respectful and solution-oriented in working with others.'
+        principle6Detail: 'Human and empathetic, especially in difficult situations; calm, respectful and solution-oriented in working with others.',
+        principle7: 'Knowledge sharing',
+        principle7Detail: 'Sharing know-how through clear documentation, mentoring and open exchange, so teams stay aligned and grow together.'
       },
       de: {
         principlesIntro: 'Meine Grundwerte',
@@ -3008,9 +3165,11 @@
         principle4: 'Qualitätsfokus',
         principle4Detail: 'Zuverlässigkeit durch Traceability, Review-Disziplin, robuste Entscheidungen und ein starkes Verifikationsverständnis absichern.',
         principle5: 'Kontinuierliches Lernen',
-        principle5Detail: 'Methoden, Tools und Workflows kontinuierlich verbessern, besonders dort, wo KI und strukturiertes Engineering praktischen Mehrwert schaffen.',
+        principle5Detail: 'Methoden, Tools und Workflows kontinuierlich verbessern und bewusst an Fehlern wachsen, statt sie zu verbergen.',
         principle6: 'Menschlich und empathisch',
-        principle6Detail: 'Menschlich und empathisch – besonders in schwierigen Situationen; ruhig, respektvoll und lösungsorientiert im Umgang mit anderen.'
+        principle6Detail: 'Menschlich und empathisch – besonders in schwierigen Situationen; ruhig, respektvoll und lösungsorientiert im Umgang mit anderen.',
+        principle7: 'Wissen teilen',
+        principle7Detail: 'Wissen durch klare Dokumentation, Mentoring und offenen Austausch weitergeben, damit Teams ausgerichtet bleiben und gemeinsam wachsen.'
       }
     };
 
