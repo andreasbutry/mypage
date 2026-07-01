@@ -1,0 +1,221 @@
+# =============================================================================
+# profile.yaml — Single source of truth for the cover-letter automation
+# -----------------------------------------------------------------------------
+# Bilingual (de/en) profile data extracted from index.html and template.tex.
+# The automation (see coverletter_automation.md) reads this file to:
+#   - write the letter in the language of the job description,
+#   - match job requirements to real evidence (no invented experience),
+#   - render the core-values mindmap and icon list.
+# Edit THIS file when your experience changes — never hard-code facts in a letter.
+# =============================================================================
+
+meta:
+  name: "Andreas Butry"
+  title:
+    de: "Funktionale Sicherheit, Software Qualität, Engineering-Prozesse & KI-Innovation"
+    en: "Functional Safety, Software Quality, Engineering Processes & AI Innovation"
+  address: "Louise-Schroeder-Str. 2, 67551 Worms, Germany"
+  phone: "+49 179 140 90 57"
+  email: "andreas.butry@gmail.com"
+  linkedin_label: "Andreas Butry"
+  linkedin_url: "https://www.linkedin.com/in/andreas-butry-23641530a"
+  homepage_label: "andreasbutry.github.io/mypage"
+  homepage_url: "https://andreasbutry.github.io/mypage/"
+  languages_spoken:
+    de: { Deutsch: "Muttersprache", Englisch: "verhandlungssicher", Spanisch: "B1" }
+    en: { German: "native", English: "fluent (C1/C2)", Spanish: "B1" }
+
+# --- About / Profil ----------------------------------------------------------
+about:
+  de: >
+    Systems & Software Engineer mit Expertise in sicherheitskritischen
+    Automotive-Systemen, Softwarequalität und Softwareentwicklungsprozessen.
+    Umfassende Erfahrung über den gesamten System- und Software-Lebenszyklus
+    hinweg: Vom Anforderungsmanagement und der System-/Softwarearchitektur bis
+    zu Implementierung, Verifikation und Freigabe nach ISO 26262 und ASPICE.
+    Fokus auf die kontinuierliche Verbesserung von Entwicklungsprozessen,
+    speziell durch den Einsatz von KI-gestützten Methoden und Werkzeugen. In
+    Verbindung mit meinem sicherheitskritischen Hintergrund untersuche ich, wie
+    KI-generierte Software verlässlich und weitgehend fehlerfrei werden kann —
+    etwa durch Verifikation, Traceability und Human-in-the-Loop-Review.
+  en: >
+    Systems & Software Engineer with expertise in safety-critical automotive
+    systems, software quality and software development processes. Broad
+    experience across the full system and software lifecycle, from requirements
+    management and system/software architecture to implementation, verification
+    and release in line with ISO 26262 and ASPICE. Strong focus on the
+    continuous improvement of development processes, especially through
+    AI-supported methods and tools. Bringing this together with my
+    safety-critical background, I explore how AI-generated software can be made
+    dependable and largely error-free through verification, traceability and
+    human-in-the-loop review.
+
+# --- 5 Expertise pillars (index.html) ---------------------------------------
+expertise:
+  - key: safe_reliable
+    de: { title: "Sichere & verlässliche Software", desc: "Funktionale Sicherheit, Softwarequalität, robustes Systemverhalten und ein Verifikations-Mindset." }
+    en: { title: "Safe & Reliable Software", desc: "Functional safety, software quality, robust behavior, verification mindset." }
+  - key: systems_sw
+    de: { title: "Systems & Software Engineering", desc: "End-to-End-Denken von Anforderungen und Architektur bis zu Implementierung und Validierung." }
+    en: { title: "Systems & Software Engineering", desc: "End-to-end thinking from requirements and architecture to implementation and validation." }
+  - key: processes
+    de: { title: "Engineering-Prozesse", desc: "Strukturierte Entwicklung, Traceability, Dokumentation und kontinuierliche Verbesserung." }
+    en: { title: "Engineering Processes", desc: "Structured development, traceability, documentation, and continuous improvement." }
+  - key: ai_dev
+    de: { title: "KI-gestützte Entwicklung", desc: "Pragmatischer Einsatz von KI zur Unterstützung von Softwareentwicklung, Engineering-Workflows und Produktivität." }
+    en: { title: "AI-Driven Development", desc: "Practical use of AI to support software development, engineering workflows, and productivity." }
+  - key: ai_consulting
+    de: { title: "KI-Consulting", desc: "Erkundung von KI-Anwendungsfällen, KI-Integration und Prozessautomatisierung über verschiedene Stufen der Datensensibilität hinweg." }
+    en: { title: "AI Consulting", desc: "Exploring AI use cases, AI integration and process automation across different levels of data sensitivity." }
+
+# --- 7 Core values (index.html) — used for mindmap + icon list ---------------
+# icon = FontAwesome5 macro name (without \fa prefix nuance handled in template)
+values:
+  - key: complexity
+    icon: "faSitemap"
+    de: { title: "Komplexität herunterbrechen", desc: "Komplexe Probleme in überschaubare, strukturierte Arbeitspakete mit klaren Schnittstellen, Prioritäten und Validierungspfaden überführen." }
+    en: { title: "Breaking down complexity", desc: "Turning complex problems into manageable, structured work packages with clear interfaces, priorities and validation paths." }
+  - key: big_picture
+    icon: "faProjectDiagram"
+    de: { title: "Das große Ganze sehen", desc: "Anforderungen, Systemverhalten, Implementierung, Prozesse und Stakeholder-Bedürfnisse zusammen denken, statt nur ein lokales Detail zu optimieren." }
+    en: { title: "Seeing the bigger picture", desc: "Connecting requirements, system behavior, implementation, process and stakeholder needs instead of optimizing only one local detail." }
+  - key: communication
+    icon: "faComments"
+    de: { title: "Klare Kommunikation", desc: "Technische Themen verständlich machen, Schnittstellen früh abstimmen und gemeinsame Klarheit über Engineering, Qualität und Management hinweg schaffen." }
+    en: { title: "Clear communication", desc: "Making technical topics understandable, aligning interfaces early and creating shared clarity across engineering, quality and management." }
+  - key: quality
+    icon: "faCheckDouble"
+    de: { title: "Qualitätsfokus", desc: "Zuverlässigkeit durch Traceability, Review-Disziplin, robuste Entscheidungen und ein starkes Verifikationsverständnis absichern." }
+    en: { title: "Quality focus", desc: "Building reliability through traceability, review discipline, robust decision-making and a strong verification mindset." }
+  - key: learning
+    icon: "faSeedling"
+    de: { title: "Kontinuierliches Lernen", desc: "Methoden, Tools und Workflows kontinuierlich verbessern und bewusst an Fehlern wachsen, statt sie zu verbergen." }
+    en: { title: "Continuous learning", desc: "Continuously improving methods, tools and workflows, and deliberately growing from mistakes rather than hiding them." }
+  - key: empathy
+    icon: "faHandsHelping"
+    de: { title: "Menschlich und empathisch", desc: "Menschlich und empathisch — besonders in schwierigen Situationen; ruhig, respektvoll und lösungsorientiert im Umgang mit anderen." }
+    en: { title: "Human and empathetic", desc: "Human and empathetic, especially in difficult situations; calm, respectful and solution-oriented in working with others." }
+  - key: knowledge_sharing
+    icon: "faShareNodes"
+    de: { title: "Wissen teilen", desc: "Wissen durch klare Dokumentation, Mentoring und offenen Austausch weitergeben, damit Teams ausgerichtet bleiben und gemeinsam wachsen." }
+    en: { title: "Knowledge sharing", desc: "Sharing know-how through clear documentation, mentoring and open exchange, so teams stay aligned and grow together." }
+
+# --- Experience (used as evidence in the matching table) ---------------------
+experience:
+  - company: "TES Electronics"
+    location: "Offenbach / remote"
+    period: "05/2025 – heute | since 05/2025"
+    de: { role: "Senior Design Engineer — Embedded & IoT Software Design" }
+    en: { role: "Senior Design Engineer — Embedded & IoT Software Design" }
+    tags: [api, cloud, iot, home-automation, ai-sdlc, agentic, claude-code, project-management, embedded]
+    bullets:
+      de:
+        - "Konzeption und Entwicklung von APIs für cloudbasierte Services und vernetzte Home-Automation-Lösungen."
+        - "Aufbau und Optimierung von Entwicklungsprozessen für KI-generierte Software mit agentischen Design-Workflows (Claude Code)."
+        - "Verantwortung für Projektplanung, technische Abstimmung und Koordination von Entwicklungsprojekten."
+      en:
+        - "Design and development of APIs for cloud-based services and connected home-automation solutions."
+        - "Build-up and optimization of development processes for AI-generated software with agentic design workflows (Claude Code)."
+        - "Responsibility for project planning, technical alignment and coordination of development projects."
+  - company: "Continental"
+    location: "Frankfurt / remote"
+    period: "09/2016 – 05/2025"
+    de: { role: "Funktionsentwicklung & Produktmanagement — sicherheitskritische Bremssteuergeräte" }
+    en: { role: "Functional software development & product management — safety-critical brake control units" }
+    tags: [functional-safety, iso26262, aspice, embedded, can, autosar, simulink, algorithms, oem, bmw, vw, product-management, requirements, verification, redundancy, automated-driving, misra, polyspace]
+    bullets:
+      de:
+        - "Produktentwicklung und -management für EU7-konforme Bremssysteme inkl. Risikobewertung, Definition/Auswahl von Software-Kompensationsalgorithmen, technischer Unterstützung, Testplanung, bereichsübergreifender Koordination und Kundenkommunikation mit OEMs wie BMW und VW."
+        - "Neuentwicklung eines modellbasierten (Simulink) Reifentoleranzausgleichs-Algorithmus mittels multidimensionaler linearer Regression (rekursiver Least-Squares-Schätzer)."
+        - "Systementwicklung für redundante Bremssteuerung im hochautomatisierten Fahren (Zwei-ECU-Architektur), inkl. Raddrehzahl-Kommunikation über CAN, Fehlererkennung und Degradationsstrategien für funktionale Sicherheit."
+        - "Softwarequalität & Prozessverantwortung in der Entwicklung nach ASPICE und ISO 26262."
+      en:
+        - "Product development and management for EU7-compliant brake systems incl. risk assessment, definition/selection of software compensation algorithms, technical support, test planning, cross-functional coordination and customer communication with OEMs such as BMW and VW."
+        - "New development of a model-based (Simulink) tire-tolerance compensation algorithm using multidimensional linear regression (recursive least-squares estimator)."
+        - "System development for redundant brake control in highly automated driving (two-ECU architecture) incl. wheel-speed communication via CAN, fault detection and degradation strategies for functional safety."
+        - "Software quality and process responsibility in development aligned with ASPICE and ISO 26262."
+  - company: "TU Darmstadt · ThyssenKrupp Presta"
+    location: "Darmstadt / Liechtenstein"
+    period: "2009 – 2015"
+    de: { role: "Simulation, Test & Fahrzeugintegration (Werkstudent / Praktikum)" }
+    en: { role: "Simulation, testing & vehicle integration (student assistant / internship)" }
+    tags: [simulink, hil, real-time, c++, steer-by-wire, vehicle-dynamics, dspace, testing, mentoring]
+    bullets:
+      de:
+        - "Aufbau und Inbetriebnahme einer omnidirektionalen Fahrsimulatorplattform; Echtzeit-Rechnersystem (IPG HIL, MATLAB/Simulink, C/C++)."
+        - "Integration von Steer-by-Wire-Systemen, Prüfstandversuche und Validierung von Fahrdynamikmodellen."
+      en:
+        - "Setup and commissioning of an omnidirectional driving simulator platform; real-time computing system (IPG HIL, MATLAB/Simulink, C/C++)."
+        - "Integration of steer-by-wire systems, test-bench experiments and validation of vehicle dynamics models."
+
+education:
+  de: { degree: "M.Sc. Elektro- und Informationstechnik", school: "TU Darmstadt", period: "2008 – 2016", grade: "1,9" }
+  en: { degree: "M.Sc. Electrical Engineering and Information Technology", school: "TU Darmstadt", period: "2008 – 2016", grade: "1.9 (German scale)" }
+
+# --- Skills (6 groups, index.html) — tags fuel the matcher -------------------
+skills:
+  programming:
+    de: "Programmierung, Scripting & Protokolle"
+    en: "Programming, Scripting & Protocols"
+    tags: [C, "C++", "C#", Java, Python, SQL, JSON, HTML, CSS, LaTeX, REST, OAuth, MQTT, CAN, APIs]
+  embedded:
+    de: "Systems & Embedded Engineering"
+    en: "Systems & Embedded Engineering"
+    tags: ["Embedded Systems", RTOS, Windows, Linux, UART, AUTOSAR, "System Architecture/Design"]
+  modeling:
+    de: "Modellierung & Simulation"
+    en: "Modeling & Simulation"
+    tags: ["MATLAB/Simulink", "IBM Rhapsody", "Enterprise Architect", "IPG HIL", "IPG CarMaker", "dSPACE ControlDesk", "Vehicle Dynamics Simulation", UML]
+  quality:
+    de: "Qualität, Sicherheit & Prozesse"
+    en: "Quality, Safety & Processes"
+    tags: ["Software Quality", "ISO 26262", ASPICE, "MISRA-C", Polyspace, "HIS-Metriken", TDD, Traceability]
+  delivery:
+    de: "Projektabwicklung & Zusammenarbeit"
+    en: "Project Delivery & Collaboration"
+    tags: ["Project Management", Agile, SAFe, Scrum, Git, GitHub, GitLab, Jira, DOORS, Eclipse, "Visual Studio", Docker, Jenkins, Kubernetes]
+  ai:
+    de: "KI & moderne Entwicklung"
+    en: "AI & Modern Development"
+    tags: ["Generative AI", "LLM-based Applications", "Prompt Engineering", "Context Engineering", "AI-Driven SDLC", "Agentic Workflows", "Multi-Agent Systems", LangChain, RAG, MCP, "Claude Code"]
+
+# --- Matching keyword map: JD term (lowercased, substring) -> evidence -------
+# The matcher scans the JD for these keys; each hit produces a table row whose
+# "evidence" cites the role/standard/years below. Extend freely.
+matching_keywords:
+  "iso 26262":      { area: "Functional safety", evidence_de: "8+ Jahre sicherheitskritische Bremssteuergeräte nach ISO 26262 @ Continental", evidence_en: "8+ yrs safety-critical brake ECUs per ISO 26262 @ Continental", strength: strong }
+  "functional safety": { area: "Functional safety", evidence_de: "Funktionale Sicherheit über den gesamten Lebenszyklus, Degradationsstrategien, Zwei-ECU-Redundanz", evidence_en: "Functional safety across the lifecycle, degradation strategies, two-ECU redundancy", strength: strong }
+  "aspice":         { area: "Process / quality", evidence_de: "Prozessverantwortung & Entwicklung nach ASPICE @ Continental", evidence_en: "Process responsibility & development per ASPICE @ Continental", strength: strong }
+  "embedded":       { area: "Embedded engineering", evidence_de: "Embedded-/IoT-Softwareentwicklung @ TES; Bremssteuergeräte @ Continental", evidence_en: "Embedded/IoT software development @ TES; brake ECUs @ Continental", strength: strong }
+  "c++":            { area: "Programming", evidence_de: "C/C++ in Echtzeit- und Embedded-Systemen (HIL, Steuergeräte)", evidence_en: "C/C++ in real-time and embedded systems (HIL, ECUs)", strength: strong }
+  "c#":             { area: "Programming", evidence_de: "C# im Werkzeug-/Anwendungsbereich", evidence_en: "C# for tooling/applications", strength: partial }
+  "python":         { area: "Programming", evidence_de: "Python für Automatisierung, Tooling und KI-Workflows", evidence_en: "Python for automation, tooling and AI workflows", strength: strong }
+  "api":            { area: "APIs / cloud", evidence_de: "API-Design für cloudbasierte Services & Home-Automation @ TES", evidence_en: "API design for cloud services & home automation @ TES", strength: strong }
+  "cloud":          { area: "Cloud", evidence_de: "Cloudbasierte Services & vernetzte Produkte @ TES", evidence_en: "Cloud-based services & connected products @ TES", strength: partial }
+  "iot":            { area: "IoT / home automation", evidence_de: "Vernetzte Home-Automation-Lösungen @ TES", evidence_en: "Connected home-automation solutions @ TES", strength: strong }
+  "home automation":{ area: "IoT / home automation", evidence_de: "Vernetzte Home-Automation-Lösungen @ TES", evidence_en: "Connected home-automation solutions @ TES", strength: strong }
+  "can":            { area: "Automotive bus", evidence_de: "Raddrehzahl-Kommunikation über CAN-Bus zwischen ECUs", evidence_en: "Wheel-speed communication over CAN bus between ECUs", strength: strong }
+  "autosar":        { area: "Automotive SW", evidence_de: "AUTOSAR im automotiven Umfeld", evidence_en: "AUTOSAR in the automotive domain", strength: partial }
+  "simulink":       { area: "Model-based dev", evidence_de: "Modellbasierte Algorithmik in MATLAB/Simulink (Reifentoleranzausgleich, Fahrdynamik)", evidence_en: "Model-based algorithms in MATLAB/Simulink (tire tolerance, vehicle dynamics)", strength: strong }
+  "matlab":         { area: "Model-based dev", evidence_de: "MATLAB/Simulink über Studium und Industrie hinweg", evidence_en: "MATLAB/Simulink across academia and industry", strength: strong }
+  "requirements":   { area: "Requirements eng.", evidence_de: "Anforderungsmanagement über den gesamten Lebenszyklus; DOORS", evidence_en: "Requirements management across the lifecycle; DOORS", strength: strong }
+  "architecture":   { area: "System/SW architecture", evidence_de: "System-/Softwarearchitektur von Anforderungen bis Validierung", evidence_en: "System/software architecture from requirements to validation", strength: strong }
+  "verification":   { area: "Verification & test", evidence_de: "Verifikation, Testplanung, Freigabe; Verifikations-Mindset", evidence_en: "Verification, test planning, release; verification mindset", strength: strong }
+  "tdd":            { area: "Verification & test", evidence_de: "Verifikations-Mindset mit Test-Driven Development (TDD) — auch für KI-generierte Software", evidence_en: "Verification mindset with Test-Driven Development (TDD) — also for AI-generated software", strength: strong }
+  "test-driven":    { area: "Verification & test", evidence_de: "Test-Driven Development (TDD) als Teil eines ausgeprägten Verifikations-Mindsets", evidence_en: "Test-Driven Development (TDD) as part of a strong verification mindset", strength: strong }
+  "verification mindset": { area: "Verification & test", evidence_de: "Ausgeprägter Verifikations-Mindset über den gesamten Lebenszyklus (Traceability, Review-Disziplin, TDD)", evidence_en: "Strong verification mindset across the lifecycle (traceability, review discipline, TDD)", strength: strong }
+  "test":           { area: "Verification & test", evidence_de: "Testplanung & Prüfstandversuche; HIL", evidence_en: "Test planning & test-bench experiments; HIL", strength: strong }
+  "misra":          { area: "Coding standards", evidence_de: "MISRA-C, Polyspace & HIS-Metriken in der sicherheitskritischen Entwicklung", evidence_en: "MISRA-C, Polyspace & HIS metrics in safety-critical development", strength: strong }
+  "his":            { area: "Code metrics", evidence_de: "HIS-Metriken (Code-Komplexität) neben MISRA-C & Polyspace in der sicherheitskritischen Entwicklung", evidence_en: "HIS metrics (code complexity) alongside MISRA-C & Polyspace in safety-critical development", strength: strong }
+  "code metrics":   { area: "Code metrics", evidence_de: "Code-Metriken (HIS) zur Qualitätssicherung sicherheitskritischer Software", evidence_en: "Code metrics (HIS) for quality assurance of safety-critical software", strength: strong }
+  "agile":          { area: "Ways of working", evidence_de: "Agile/Scrum/SAFe in Projektabwicklung", evidence_en: "Agile/Scrum/SAFe in project delivery", strength: partial }
+  "scrum":          { area: "Ways of working", evidence_de: "Scrum in der Projektabwicklung", evidence_en: "Scrum in project delivery", strength: partial }
+  "project management": { area: "Project management", evidence_de: "Projektplanung, technische Abstimmung & Koordination @ TES; Produktmanagement @ Continental", evidence_en: "Project planning, technical alignment & coordination @ TES; product management @ Continental", strength: strong }
+  "docker":         { area: "DevOps", evidence_de: "Docker im Entwicklungs-Stack", evidence_en: "Docker in the development stack", strength: partial }
+  "ci/cd":          { area: "DevOps", evidence_de: "CI/CD mit Git/Jenkins/Kubernetes", evidence_en: "CI/CD with Git/Jenkins/Kubernetes", strength: partial }
+  "git":            { area: "Tooling", evidence_de: "Git/GitHub/GitLab im täglichen Workflow", evidence_en: "Git/GitHub/GitLab in daily workflow", strength: strong }
+  "llm":            { area: "AI / GenAI", evidence_de: "LLM-basierte Anwendungen, Prompt-/Context-Engineering", evidence_en: "LLM-based applications, prompt/context engineering", strength: strong }
+  "generative ai":  { area: "AI / GenAI", evidence_de: "Generative KI in Entwicklungs-Workflows", evidence_en: "Generative AI in development workflows", strength: strong }
+  "agent":          { area: "Agentic AI", evidence_de: "Agentische Systeme & Multi-Agenten-Workflows (Claude Code, MCP)", evidence_en: "Agentic systems & multi-agent workflows (Claude Code, MCP)", strength: strong }
+  "rag":            { area: "AI / retrieval", evidence_de: "Retrieval-Augmented Generation (RAG)", evidence_en: "Retrieval-Augmented Generation (RAG)", strength: partial }
+  "mcp":            { area: "AI / tooling", evidence_de: "Model Context Protocol (MCP) in agentischen Workflows", evidence_en: "Model Context Protocol (MCP) in agentic workflows", strength: strong }

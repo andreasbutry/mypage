@@ -1,0 +1,103 @@
+%% Anschreiben (Cover Letter) — modern, clean tech style
+%% Compile with: pdflatex anschreiben.tex   (or xelatex / lualatex)
+
+\documentclass[10pt,a4paper]{article}
+
+% ---- Encoding & language -------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+% ---- Modern sans-serif font ----------------------------------------
+\usepackage[default]{lato}     % clean, modern sans; falls back gracefully
+\renewcommand{\familydefault}{\sfdefault}
+
+% ---- Page geometry -------------------------------------------------
+\usepackage[a4paper,top=2.2cm,bottom=2.2cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.9em}
+
+% ---- Color & helpers -----------------------------------------------
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{2C6E91}   % muted tech-blue
+\definecolor{ink}{HTML}{222222}
+\definecolor{light}{HTML}{777777}
+\color{ink}
+
+\usepackage{fontawesome5}            % icons for contact line
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent}
+\usepackage{tikz}
+
+% ---- Sender data ---------------------------------------------------
+\newcommand{\myname}{Andreas Butry}
+\newcommand{\mytitle}{System \& Software Engineer — Functional Safety, Engineering Processes \& AI Innovation}
+\newcommand{\myaddress}{Louise-Schroeder-Str.\ 2, 67551 Worms, Germany}
+\newcommand{\myphone}{+49 179 140 90 57}
+\newcommand{\myemail}{andreas.butry@gmail.com}
+\newcommand{\mylinkedin}{Andreas Butry}
+
+\begin{document}
+\pagestyle{empty}
+
+% ---- Header --------------------------------------------------------
+{\Huge\bfseries\color{accent}\myname}\\[2pt]
+{\color{light}\small\mytitle}\\[6pt]
+{\color{accent}\rule{\linewidth}{1.2pt}}\\[4pt]
+{\small\color{light}%
+  \faMapMarker* \enspace \myaddress \quad\textbar\quad
+  \faPhone* \enspace \myphone \\[1pt]
+  \faEnvelope \enspace \href{mailto:\myemail}{\myemail} \quad\textbar\quad
+  \faLinkedin \enspace \href{https://www.linkedin.com/in/}{\mylinkedin}%
+}
+
+\vspace{1.4em}
+
+% ---- Recipient & date ----------------------------------------------
+\begin{minipage}[t]{0.6\linewidth}
+  Loxone Electronics GmbH\\
+  Personalabteilung\\
+  Schlossstraße 1\\
+  4154 Kollerschlag
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\linewidth}
+  \raggedleft Worms, \today
+\end{minipage}
+
+\vspace{1.6em}
+
+% ---- Subject -------------------------------------------------------
+{\bfseries Bewerbung als \emph{[Stellenbezeichnung]}}
+
+\vspace{0.6em}
+
+% ---- Body ----------------------------------------------------------
+Sehr geehrte Damen und Herren,
+
+mit großem Interesse habe ich Ihre Stellenausschreibung für die Position
+als \emph{[Stellenbezeichnung]} gelesen und bewerbe mich hiermit um diese
+Tätigkeit in Ihrem Unternehmen.
+
+In meiner bisherigen Laufbahn konnte ich umfangreiche Erfahrungen in
+\emph{[Fachgebiet]} sammeln. Besonders reizt mich an Ihrem Unternehmen
+\emph{[konkreter Grund / Projekt / Produkt]}, da ich hier meine Stärken in
+\emph{[Kompetenz 1]} und \emph{[Kompetenz 2]} gewinnbringend einbringen kann.
+
+Meine Arbeitsweise zeichnet sich durch \emph{[Eigenschaft, z.\,B.\
+selbstständig, lösungsorientiert, teamfähig]} aus. Ich bin überzeugt, mit
+meinem Profil einen wertvollen Beitrag zu Ihrem Team leisten zu können und
+freue mich darauf, dies in einem persönlichen Gespräch näher zu erläutern.
+
+Über eine Einladung zu einem Vorstellungsgespräch freue ich mich sehr.
+
+\vspace{1.2em}
+
+Mit freundlichen Grüßen\\[1.6em]
+\myname
+
+\vspace{1.4em}
+{\small\color{light}Anlagen: Lebenslauf, Zeugnisse}
+
+\end{document}
