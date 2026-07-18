@@ -579,6 +579,7 @@ h2 {
   gap: 6px;
   flex: 1 1 auto;
   min-width: 0;
+  padding-right: 44px;
 }
 
 .knowledge-teaser {
@@ -1348,8 +1349,8 @@ h2 {
 .expertise-pillar:hover .principle-toggle::after,
 .expertise-pillar.is-open .principle-toggle::after,
 .expertise-pillar:focus-within .principle-toggle::after {
-  transform: rotate(45deg);
-  background: rgba(127, 226, 215, 0.10);
+  transform: rotate(180deg);
+  background-color: rgba(127, 226, 215, 0.10);
 }
 
 .expertise-fusion {
@@ -1492,10 +1493,6 @@ body.no-header-mode {
     min-height: 38px;
     min-width: 48px;
     padding: 0 14px;
-  }
-
-  .floating-menu-panel {
-    width: min(220px, calc(100vw - 24px));
   }
 }
 
@@ -1902,68 +1899,64 @@ section:hover .section-head h2 {
   margin-top: 12px;
 }
 
-.experience-toggle {
-  margin-top: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent);
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+.experience-card {
+  position: relative;
 }
 
-.experience-toggle::after {
-  content: '+';
-  width: 18px;
-  height: 18px;
+.experience-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   border: 1px solid rgba(127, 226, 215, 0.22);
-  font-size: 0.9rem;
-  line-height: 1;
-  transition: transform 180ms ease, background 180ms ease;
+  color: transparent;
+  font-size: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fe2d7' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.experience-card.is-open .experience-toggle::after {
-  transform: rotate(45deg);
-  background: rgba(127, 226, 215, 0.10);
+.experience-card.is-open .experience-toggle {
+  transform: rotate(180deg);
+  background-color: rgba(127, 226, 215, 0.10);
+}
+
+.knowledge-accordion {
+  position: relative;
 }
 
 .detail-toggle {
-  margin-top: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent);
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  user-select: none;
-  width: fit-content;
-}
-
-.detail-toggle::after {
-  content: '+';
-  width: 18px;
-  height: 18px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   border: 1px solid rgba(127, 226, 215, 0.22);
-  font-size: 0.9rem;
-  line-height: 1;
-  transition: transform 180ms ease, background 180ms ease;
+  color: transparent;
+  font-size: 0;
+  cursor: pointer;
+  user-select: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fe2d7' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.experience-card.is-open .detail-toggle::after,
-.knowledge-accordion.is-open .detail-toggle::after {
-  transform: rotate(45deg);
-  background: rgba(127, 226, 215, 0.10);
+.knowledge-accordion.is-open .detail-toggle {
+  transform: rotate(180deg);
+  background-color: rgba(127, 226, 215, 0.10);
 }
 
 .experience-card .bullet-list {
@@ -2057,7 +2050,7 @@ section:hover .section-head h2 {
 }
 
 .principle-toggle::after {
-  content: '+';
+  content: '';
   margin-left: 8px;
   width: 18px;
   height: 18px;
@@ -2066,9 +2059,11 @@ section:hover .section-head h2 {
   justify-content: center;
   border-radius: 999px;
   border: 1px solid rgba(127, 226, 215, 0.22);
-  font-size: 0.9rem;
-  line-height: 1;
-  transition: transform 180ms ease, background 180ms ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fe2d7' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 11px 11px;
+  transition: transform 180ms ease, background-color 180ms ease;
 }
 
 .principle-detail {
@@ -2106,8 +2101,8 @@ section:hover .section-head h2 {
 .principles-list li:hover .principle-toggle::after,
 .principles-list li.is-open .principle-toggle::after,
 .principles-list li:focus-within .principle-toggle::after {
-  transform: rotate(45deg);
-  background: rgba(127, 226, 215, 0.10);
+  transform: rotate(180deg);
+  background-color: rgba(127, 226, 215, 0.10);
 }
 
 
@@ -2243,6 +2238,32 @@ section:hover .section-head h2 {
 .skills-hover-grid .skill-hover-card .stack-card-head h3 {
   margin: 0;
   flex: 1;
+  padding-right: 40px;
+}
+
+.skills-hover-grid .skill-hover-card .skill-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 226, 215, 0.22);
+  color: transparent;
+  font-size: 0;
+  margin-left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237fe2d7' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.skills-hover-grid .skill-hover-card .skill-toggle::after {
+  content: none;
 }
 
 .skills-hover-grid .skill-hover-card .stack-preview {
@@ -2270,11 +2291,11 @@ section:hover .section-head h2 {
   margin-top: 12px;
 }
 
-.skills-hover-grid .skill-hover-card:hover .skill-toggle::after,
-.skills-hover-grid .skill-hover-card:focus-within .skill-toggle::after,
-.skills-hover-grid .skill-hover-card.is-open .skill-toggle::after {
-  transform: rotate(45deg);
-  background: rgba(127, 226, 215, 0.10);
+.skills-hover-grid .skill-hover-card:hover .skill-toggle,
+.skills-hover-grid .skill-hover-card:focus-within .skill-toggle,
+.skills-hover-grid .skill-hover-card.is-open .skill-toggle {
+  transform: rotate(180deg);
+  background-color: rgba(127, 226, 215, 0.10);
 }
 
 
